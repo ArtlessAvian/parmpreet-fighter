@@ -21,6 +21,3 @@ func run(controller):
 func enter(enter):
 	print(enter)
 	entering_number = enter;
-
-func animation_name(controller):
-	return "Dash"

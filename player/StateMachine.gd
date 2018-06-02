@@ -19,6 +19,8 @@ func change_state(state_str, enter):
 	print(current_state.name + "\t" + state_str)
 	current_state = get_node(state_str)
 	
+	$AnimationPlayer.play("Rest")
+	$AnimationPlayer.advance(1)
 	$AnimationPlayer.play(current_state.animation_name(controller))
 	current_state.enter(enter)
 #	$AnimationPlayer.stop(true)

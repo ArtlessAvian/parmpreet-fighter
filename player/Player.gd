@@ -42,8 +42,9 @@ func grounded_check(controller):
 	
 	# Attacks
 	
-#	if (controller.dir() <= 3):
-#		$StateMachine.change_state("Crouch")
+	if (controller.dir() <= 3):
+		$StateMachine.change_state("Crouch", null)
+		return
 
 	# Dash
 	if (self.scale.x == 1 && controller.detect_motion("656", 10)):

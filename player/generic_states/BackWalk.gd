@@ -15,7 +15,7 @@ func run(controller):
 	if (subject.scale.x * (subject.enemy.position.x - subject.position.x) < 0):
 		subject.scale.x *= -1
 	
-	subject.position.x += (entering_number - 5) * 2;
+	subject.position.x += (entering_number - 5) * 5;
 
 func enter(enter):
 	entering_number = enter;

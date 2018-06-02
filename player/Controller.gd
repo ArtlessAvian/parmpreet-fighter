@@ -3,11 +3,13 @@ extends Node
 var focus = "kb"
 
 var buffer = []
+var change_buffer = []
 const BUFFER_SIZE = 30
 
 func _ready():
 	for i in range(0,BUFFER_SIZE):
 		buffer.append(5)
+		change_buffer.append(5)
 
 func _process(delta):
 	var angle = 5
@@ -22,6 +24,10 @@ func _process(delta):
 	
 	buffer.push_front(angle)
 	buffer.pop_back()
+	
+	if (buffer[0] != buffer[1]):
+		change_buffer.push_front(buffer[0])
+		change_buffer.pop_back();
 
 func dir():
 	return buffer[0]
