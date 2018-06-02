@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/spritesheet test.png-a1a5f30517d9fd17f1e6a9395bff4c92.stex"
+
+[deps]
+
+source_file="res://res/spritesheet test.png"
+source_md5="5bdbd43b7cd72627b11c5a65e7525b82"
+
+dest_files=[ "res://.import/spritesheet test.png-a1a5f30517d9fd17f1e6a9395bff4c92.stex" ]
+dest_md5="3d2e6cedc8c5ffa75a6c72e6978f6c32"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
