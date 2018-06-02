@@ -23,6 +23,9 @@ func _process(delta):
 	buffer.push_front(angle)
 	buffer.pop_back()
 
+func dir():
+	return buffer[0]
+
 func detect_motion(nums):
 	var cursor = -1
 	for index in range(nums.length()-1, 0, -1):
