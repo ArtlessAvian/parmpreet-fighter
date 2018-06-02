@@ -26,12 +26,15 @@ func _process(delta):
 func dir():
 	return buffer[0]
 
-func detect_motion(nums):
+func detect_motion(nums, leeway):
+	if (int(nums[nums.length()-1]) != buffer[0]):
+		return false
+	
 	var cursor = -1
-	for index in range(nums.length()-1, 0, -1):
+	for index in range(nums.length()-1, -1, -1):
 		
 		var fail = true
-		for attempt in range(0,10):
+		for attempt in range(0, leeway):
 			cursor += 1
 			if (cursor >= BUFFER_SIZE):
 				return false
@@ -43,8 +46,30 @@ func detect_motion(nums):
 			
 	return true
 
+#func trace_motion(nums, leeway):
+#	var trace = ""
+#	if (int(nums[nums.length()-1]) != buffer[0]):
+#		return buffer[0] + " FAIL"
+#
+#	var cursor = -1
+#	for index in range(nums.length()-1, -1, -1):
+#
+#		var fail = true
+#		for attempt in range(0, leeway):
+#			cursor += 1
+#			if (cursor >= BUFFER_SIZE):
+#				return trace + " TOO SLOW"
+#			trace = trace + str(buffer[cursor])
+#			if (buffer[cursor] == int(nums[index])):
+#				fail = false
+#				break
+#		if (fail):
+#			return trace + " FAIL"
+#
+#	return trace + " SUCC"
+
 func is_qcf():
-	return detect_motion("236")
+	return detect_motion("236", 10)
 
 func is_qcb():
-	return detect_motion("214")
+	return detect_motion("214", 10)

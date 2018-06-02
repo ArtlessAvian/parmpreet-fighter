@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Controller.gd" type="Script" id=2]
@@ -8,6 +8,217 @@
 [ext_resource path="res://player/generic_states/Walk.gd" type="Script" id=6]
 [ext_resource path="res://player/generic_states/Stand.gd" type="Script" id=7]
 [ext_resource path="res://player/generic_states/BackWalk.gd" type="Script" id=8]
+[ext_resource path="res://player/generic_states/Dash.gd" type="Script" id=9]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "BackWalk"
+length = 15.0
+loop = true
+step = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 9, 10 ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "Dash"
+length = 30.0
+loop = false
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 30.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Jump"
+length = 30.0
+loop = false
+step = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 30 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "Rest"
+length = 1.0
+loop = false
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -64 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.25, 0.25 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "Stand"
+length = 20.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -64 ), Vector2( 0, -60 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.25, 0.25 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "Walk"
+length = 25.0
+loop = true
+step = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10, 15, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12 ]
+}
 
 [node name="TestPlayer" type="Node2D"]
 
@@ -20,40 +231,53 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
+position = Vector2( 0, -64 )
+rotation = 0.523599
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )
-offset = Vector2( 0, -256 )
 vframes = 8
 hframes = 8
-_sections_unfolded = [ "Animation", "Offset", "Transform" ]
+frame = 4
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-blend_times = [  ]
-
-[node name="StateMachine" type="Node" parent="." index="3"]
+[node name="StateMachine" type="Node" parent="." index="2"]
 
 script = ExtResource( 4 )
 
-[node name="Jump" type="Node" parent="StateMachine" index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StateMachine" index="0"]
+
+root_node = NodePath("..")
+autoplay = "Stand"
+playback_process_mode = 0
+playback_default_blend_time = 0.0
+playback_speed = 60.0
+anims/BackWalk = SubResource( 1 )
+anims/Dash = SubResource( 6 )
+anims/Jump = SubResource( 2 )
+anims/Rest = SubResource( 3 )
+anims/Stand = SubResource( 5 )
+anims/Walk = SubResource( 4 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="Jump" type="Node" parent="StateMachine" index="1"]
 
 script = ExtResource( 5 )
 
-[node name="Walk" type="Node" parent="StateMachine" index="1"]
+[node name="Walk" type="Node" parent="StateMachine" index="2"]
 
 script = ExtResource( 6 )
 
-[node name="Stand" type="Node" parent="StateMachine" index="2"]
+[node name="Stand" type="Node" parent="StateMachine" index="3"]
 
 script = ExtResource( 7 )
 
-[node name="BackWalk" type="Node" parent="StateMachine" index="3"]
+[node name="BackWalk" type="Node" parent="StateMachine" index="4"]
 
 script = ExtResource( 8 )
+
+[node name="Dash" type="Node" parent="StateMachine" index="5"]
+
+script = ExtResource( 9 )
 
 

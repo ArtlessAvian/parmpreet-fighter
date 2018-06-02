@@ -6,11 +6,12 @@ extends Node2D
 var enemy = null
 var vel = Vector2();
 var grounded = true
+var max_air_actions = 3
+var air_action = max_air_actions
 
 func _ready():
 	$StateMachine.controller = $Controller
-	for state in $StateMachine.get_children():
-		state.subject = self
+	$StateMachine.subject = self
 	$StateMachine.current_state = $StateMachine/Stand
 	self.set_physics_process(true)
 
@@ -19,22 +20,41 @@ func _physics_process(delta):
 	self.position += vel
 	
 	if (!grounded):
-		self.vel.y += 1
+		self.vel.y += 0.5
 		if (self.position.y >= 0):
 			self.vel *= 0
 			grounded = true
+			air_action = max_air_actions
 			grounded_check($Controller)
 
 func grounded_check(controller):
+	
+	if (scale.x * (enemy.position.x - position.x) < 0):
+		scale.x *= -1
 	
 	if (controller.dir() >= 7):
 		$StateMachine.change_state("Jump", controller.dir())
 		return
 	
+	# Supers
+	
+	# Special Attacks
+	
+	# Attacks
+	
 #	if (controller.dir() <= 3):
 #		$StateMachine.change_state("Crouch")
 
+	# Dash
+	if (self.scale.x == 1 && controller.detect_motion("656", 10)):
+		$StateMachine.change_state("Dash", controller.dir())
+		return
+	if (self.scale.x == -1 && controller.detect_motion("454", 10)):
+		$StateMachine.change_state("Dash", controller.dir())
+		return
+
 	if (controller.dir() == 6 || controller.dir() == 4):
+		
 		if ((controller.dir() == 6) == (self.scale.x == 1)):
 			$StateMachine.change_state("Walk", controller.dir())
 		else:
