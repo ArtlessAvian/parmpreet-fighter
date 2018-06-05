@@ -16,7 +16,7 @@ func run(controller):
 		subject.grounded_check(controller)
 		return
 	
-	subject.position.x += (entering_number - 5) * 7;
+	subject.vel.x = (entering_number - 5) * 7;
 
 func enter(enter):
 	print(enter)

@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://res/awwye.png" type="Texture" id=2]
 [ext_resource path="res://player/TestPlayer.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 40, 40 )
 
 [node name="Game" type="Node"]
 
@@ -49,6 +54,10 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 100, 0 )
 scale = Vector2( -1, 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" parent="TestPlayer2/Pushbox" index="0"]
+
+shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="4"]
 
@@ -99,3 +108,4 @@ max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Visibility" ]
 
 
+[editable path="TestPlayer2"]

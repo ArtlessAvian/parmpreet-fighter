@@ -9,3 +9,5 @@ func run(controller):
 	if (controller.dir() > 3):
 		subject.grounded_check(controller)
 		return
+	
+	subject.vel.x = 0

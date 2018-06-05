@@ -10,4 +10,10 @@ func run(controller):
 		subject.grounded_check(controller)
 		return
 	
+	if (Input.is_action_just_pressed(controller.focus + "_light")):
+		get_parent().change_state("Light", 0)
+#	if (controller.focus)
+	
+	subject.vel.x = 0
+	
 #	Turn around if you need to

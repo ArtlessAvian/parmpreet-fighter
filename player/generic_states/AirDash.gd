@@ -1,7 +1,10 @@
 extends "../PlayerState.gd"
 
 func run(controller):
-	if (get_parent().get_node("AnimationPlayer").current_animation != ""):
+	if (get_parent().get_node("AnimationPlayer").current_animation == ""):
+		if (controller.dir() != 5):
+			get_parent().subject.air_action(controller)
+	else:
 		get_parent().subject.vel.y -= 0.5
 	
 

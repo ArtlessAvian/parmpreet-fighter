@@ -23,5 +23,3 @@ func change_state(state_str, enter):
 	$AnimationPlayer.advance(1)
 	$AnimationPlayer.play(current_state.animation_name(controller))
 	current_state.enter(enter)
-#	$AnimationPlayer.stop(true)
-#	frame = 0
