@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Controller.gd" type="Script" id=2]
@@ -12,7 +12,8 @@
 [ext_resource path="res://player/generic_states/Jump.gd" type="Script" id=10]
 [ext_resource path="res://player/generic_states/DoubleJump.gd" type="Script" id=11]
 [ext_resource path="res://player/generic_states/AirDash.gd" type="Script" id=12]
-[ext_resource path="res://player/generic_states/Attack.gd" type="Script" id=13]
+[ext_resource path="res://player/generic_states/Reel.gd" type="Script" id=13]
+[ext_resource path="res://player/generic_states/Attack.gd" type="Script" id=14]
 
 [sub_resource type="Animation" id=1]
 
@@ -154,7 +155,7 @@ tracks/1/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=6]
 
 resource_name = "Light"
 length = 8.0
@@ -209,7 +210,26 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 2 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=13]
+
+resource_name = "Reel"
+length = 2.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 3 ]
+}
+
+[sub_resource type="Animation" id=7]
 
 length = 1.0
 loop = false
@@ -263,7 +283,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
 length = 20.0
 loop = true
@@ -317,7 +337,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0.25, 0.25 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
 length = 25.0
 loop = true
@@ -335,7 +355,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12 ]
 }
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
 extents = Vector2( 25, 40 )
@@ -354,6 +374,7 @@ extents = Vector2( 10, 10 )
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
+is_p2 = false
 
 [node name="Controller" type="Node" parent="." index="0"]
 
@@ -366,7 +387,7 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )
 vframes = 8
 hframes = 8
-frame = 4
+frame = 3
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="StateMachine" type="Node" parent="." index="2"]
@@ -385,10 +406,11 @@ anims/BackWalk = SubResource( 2 )
 anims/Crouch = SubResource( 3 )
 anims/Dash = SubResource( 4 )
 anims/Jump = SubResource( 5 )
-anims/Light = SubResource( 10 )
-anims/Rest = SubResource( 6 )
-anims/Stand = SubResource( 7 )
-anims/Walk = SubResource( 8 )
+anims/Light = SubResource( 6 )
+anims/Reel = SubResource( 13 )
+anims/Rest = SubResource( 7 )
+anims/Stand = SubResource( 8 )
+anims/Walk = SubResource( 9 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
@@ -424,9 +446,13 @@ script = ExtResource( 11 )
 
 script = ExtResource( 12 )
 
-[node name="Light" type="Node" parent="StateMachine" index="9"]
+[node name="Reel" type="Node" parent="StateMachine" index="9"]
 
 script = ExtResource( 13 )
+
+[node name="Light" type="Node" parent="StateMachine" index="10"]
+
+script = ExtResource( 14 )
 hitstun = 10
 hitlag = 5
 
@@ -438,13 +464,16 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 512
+collision_mask = 512
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pushbox" index="0"]
 
 position = Vector2( 0, -40 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Hitboxes" type="Area2D" parent="." index="4"]
@@ -454,10 +483,11 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 0
 collision_mask = 0
 audio_bus_override = false
 audio_bus_name = "Master"
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Audio Bus", "Collision" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -478,6 +508,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision_layer = 0
+collision_mask = 0
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]

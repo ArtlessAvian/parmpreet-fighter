@@ -3,24 +3,46 @@ extends Node2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+export (bool) var is_p2 = false
 var enemy = null
 var vel = Vector2();
 var grounded = true
 var max_air_actions = 2
 var air_action = max_air_actions
 
+var hitstun = 0
+var hitlag = 0
+
 func _ready():
 	$StateMachine.controller = $Controller
 	$StateMachine.subject = self
 	$StateMachine.current_state = $StateMachine/Stand
 	self.set_physics_process(true)
+	
+	if (is_p2):
+		$Hitboxes.set_collision_layer_bit(0, true)
+		$Hurtboxes.set_collision_mask_bit(1024, true)
+	else:
+		$Hitboxes.set_collision_layer_bit(1024, true)
+		$Hurtboxes.set_collision_mask_bit(0, true)
 
 func _physics_process(delta):
-	$StateMachine.run()
-	self.position += vel
+	if (!$Hurtboxes.get_overlapping_areas().empty()):
+		for area in $Hurtboxes.get_overlapping_areas():
+			print("oof")
+			self.hitstun = 30
+			self.hitlag = 2
+			area.get_parent().hitlag = 2
+		$StateMachine.change_state("Reel", 0)
 	
-	if ($Hitboxes.overlaps_area(enemy.get_node("Hurtboxes"))):
-		print("ayo")
+	if (hitlag > 0):
+		hitlag -= 1
+	elif (hitstun > 0):
+		hitstun -= 1
+	else:
+		$StateMachine.run()
+	
+	self.position += vel
 	
 	if (!grounded):
 		self.vel.y += 0.5
