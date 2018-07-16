@@ -7,10 +7,7 @@ path="res://.import/awwye.png-82f71a22758b588b97dd0b5fa5cabae1.stex"
 [deps]
 
 source_file="res://res/awwye.png"
-source_md5="46a7c0919ed5e7cc0dfdb5841b2b501e"
-
 dest_files=[ "res://.import/awwye.png-82f71a22758b588b97dd0b5fa5cabae1.stex" ]
-dest_md5="f97b82924a4b474fa12f8a3af067e022"
 
 [params]
 
