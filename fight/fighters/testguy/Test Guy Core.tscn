@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fight/Core.tscn" type="PackedScene" id=1]
+[ext_resource path="res://res/spritesheet test.png" type="Texture" id=2]
+
+[node name="Test Guy Core" instance=ExtResource( 1 )]
+
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="Sprite" parent="." index="1"]
+
+position = Vector2( 0, -64 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+vframes = 8
+hframes = 8
+frame = 8
+_sections_unfolded = [ "Animation", "Transform", "Visibility" ]
+
+

@@ -11,8 +11,14 @@ config_version=3
 [application]
 
 config/name="Parmpreet Fighter"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://[TEMP] Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+FightInitializer="*res://fight/FightInitializer.gd"
+Player1="*res://Controller.gd"
+Player2="*res://Controller.gd"
 
 [display]
 

@@ -1,0 +1,10 @@
+{
+	"Stand" : "",
+	"Crouch" : "",
+	"Walk" : "",
+	"BackWalk" : "",
+	"Dash" : "",
+	"Jump" : "",
+	"DoubleJump" : "",
+	"AirDash" : ""
+}
