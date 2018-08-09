@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fight/Core.gd" type="Script" id=1]
 
 [sub_resource type="GDScript" id=1]
 
@@ -27,11 +29,16 @@ func reset_and_play(anim_name):
 #	for hurtbox in hurtboxes.get_children():
 #		hurtbox.set_disabled(true)"
 
-[node name="Core" type="Node2D"]
+[node name="Core" type="Node2D" index="0"]
 
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+damage = 10
+knockback = 40
+hitstun = 20
+priority = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 
@@ -75,5 +82,9 @@ _sections_unfolded = [ "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
 }
+
+[connection signal="area_entered" from="Hurtboxes" to="." method="_queue_hit"]
+
+[connection signal="area_exited" from="Hurtboxes" to="." method="_dequeue_hit"]
 
 

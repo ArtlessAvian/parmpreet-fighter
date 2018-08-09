@@ -25,12 +25,16 @@ func _physics_process(delta):
 	if (transition != null):
 		set_state(transition)
 
-func set_state(state_str):
+func set_state(state_str, args={}):
 	
 	for observer in observers:
 		observer.call("set_state", state_str)
 	
 	var old_state = current_state
-	var args = current_state._exit(subject, controller, state_str)
+	
+	var exiting = current_state._exit(subject, controller, state_str)
+	if (exiting):
+		args["exiting"] = exiting
+		
 	current_state = find_node(state_str)
 	current_state._enter(subject, controller, old_state, args)

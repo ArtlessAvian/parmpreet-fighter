@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://fight/fighters/states/Stand.gd" type="Script" id=2]
@@ -9,7 +9,8 @@
 [ext_resource path="res://fight/fighters/states/DoubleJump.gd" type="Script" id=7]
 [ext_resource path="res://fight/fighters/states/Jump.gd" type="Script" id=8]
 [ext_resource path="res://fight/fighters/states/Walk.gd" type="Script" id=9]
-[ext_resource path="res://fight/fighters/states/Attack.gd" type="Script" id=10]
+[ext_resource path="res://fight/fighters/states/Reel.gd" type="Script" id=10]
+[ext_resource path="res://fight/fighters/states/Attack.gd" type="Script" id=11]
 
 [node name="Test Guy StateMachine" type="Node"]
 
@@ -56,9 +57,14 @@ subjectPath = ".."
 script = ExtResource( 9 )
 subjectPath = ".."
 
-[node name="Light" type="Node" parent="." index="8"]
+[node name="Reel" type="Node" parent="." index="8"]
 
 script = ExtResource( 10 )
+subjectPath = ".."
+
+[node name="Light" type="Node" parent="." index="9"]
+
+script = ExtResource( 11 )
 subjectPath = ".."
 
 

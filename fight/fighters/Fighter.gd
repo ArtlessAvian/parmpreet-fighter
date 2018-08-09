@@ -29,11 +29,22 @@ func move(delta):
 			air_action = 2
 			$StateMachine.set_state("Stand")
 
-var hit_promise = -1
 func check_hit():
-	if (get_node("Core/Hitboxes").get_overlapping_areas().size() > 0):
-		print("im hit")
-#		hit_promise = 0;
+	var hits = []
+	var highest_priority = {"priority":-999}
+	
+	for hit in $Core.queued_hits:
+		hits.push_back(hit)
+		if (hit["priority"] > highest_priority["priority"]):
+			highest_priority = $Core.queued_hits[hit]
+		print("hit!!!")
+	
+	if (!hits.empty()):
+		$StateMachine.set_state("Reel", highest_priority)
+	
+	for hit in hits:
+		$Core.queued_hits.erase(hit)
+	
 
 func get_hit():
 #	if (hit_promise != -1):
