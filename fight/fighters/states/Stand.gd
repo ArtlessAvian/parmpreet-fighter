@@ -9,7 +9,7 @@ func _run(subject, controller):
 		return self.grounded_check(subject, controller)
 	
 	if (Input.is_action_just_pressed(controller.focus + "_light")):
-		pass
+		return "Light"
 #	if (controller.focus)
 	
 	subject.vel.x = 0

@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://fight/Core.tscn" type="PackedScene" id=1]
-[ext_resource path="res://res/spritesheet test.png" type="Texture" id=2]
+[ext_resource path="res://res/spritesheet test.png" type="Texture" id=1]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
 resource_name = "AirDash"
 length = 12.0
@@ -22,7 +21,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 
 resource_name = "BackWalk"
 length = 12.0
@@ -41,9 +40,8 @@ tracks/0/keys = {
 "values": [ 11, 0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
-resource_name = "Crouch"
 length = 1.0
 loop = true
 step = 1.0
@@ -60,9 +58,8 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 0.5 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 
-resource_name = "Dash"
 length = 30.0
 loop = false
 step = 0.1
@@ -122,9 +119,63 @@ tracks/1/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 
-resource_name = "Rest"
+resource_name = "Light"
+length = 10.0
+loop = false
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitboxes/0:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 44.488, -42.8992 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/0:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 3 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/0:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+
 length = 1.0
 loop = true
 step = 0.1
@@ -189,9 +240,8 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=9]
 
-resource_name = "Stand"
 length = 20.0
 loop = true
 step = 1.0
@@ -208,9 +258,8 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=10]
 
-resource_name = "Walk"
 length = 25.0
 loop = true
 step = 1.0
@@ -227,29 +276,126 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12 ]
 }
 
-[node name="Test Guy Core" index="0" instance=ExtResource( 1 )]
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends AnimationPlayer
+
+onready var hitboxes = get_node(\"../Hitboxes\")
+onready var hurtboxes = get_node(\"../Hurtboxes\")
+
+# Observer / Facade
+func set_state(state_str):
+	if (state_str == \"DoubleJump\"):
+		state_str = \"Jump\"
+	reset_and_play(state_str)
+
+# Actual Methods
+func reset_and_play(anim_name):
+	print(anim_name)
+	self.play(\"Rest\")
+	self.advance(1)
+	self.play(anim_name)
+	
+	for hitbox in hitboxes.get_children():
+		hitbox.set_disabled(true)
+		hitbox.scale.x = 0
+		hitbox.scale.y = 0
+#	for hurtbox in hurtboxes.get_children():
+#		hurtbox.set_disabled(true)"
+
+[sub_resource type="RectangleShape2D" id=12]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="CapsuleShape2D" id=11]
+
+custom_solver_bias = 0.0
+radius = 19.8552
+height = 74.1223
+
+[node name="Test Guy Core" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Playback Options", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="AnimationPlayer" parent="." index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 
+root_node = NodePath("..")
 autoplay = "Stand"
-anims/AirDash = SubResource( 1 )
-anims/BackWalk = SubResource( 8 )
-anims/Crouch = SubResource( 3 )
-anims/Dash = SubResource( 2 )
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 60.0
+anims/AirDash = SubResource( 2 )
+anims/BackWalk = SubResource( 3 )
+anims/Crouch = SubResource( 4 )
+anims/Dash = SubResource( 5 )
 anims/Jump = SubResource( 6 )
-anims/Rest = SubResource( 4 )
-anims/Stand = SubResource( 5 )
-anims/Walk = SubResource( 7 )
+anims/Light = SubResource( 7 )
+anims/Rest = SubResource( 8 )
+anims/Stand = SubResource( 9 )
+anims/Walk = SubResource( 10 )
+blend_times = [  ]
+script = SubResource( 1 )
+_sections_unfolded = [ "Playback Options" ]
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" type="Sprite" parent="." index="1"]
 
 position = Vector2( 0, -64 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 _sections_unfolded = [ "Animation", "Transform", "Visibility" ]
+
+[node name="Hitboxes" type="Area2D" parent="." index="2"]
+
+modulate = Color( 0, 1, 1, 1 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 1024
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="0" type="CollisionShape2D" parent="Hitboxes" index="0"]
+
+position = Vector2( 44.488, -42.8992 )
+scale = Vector2( 1, 3 )
+shape = SubResource( 12 )
+disabled = true
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Hurtboxes" type="Area2D" parent="." index="3"]
+
+modulate = Color( 0, 0, 1, 1 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+collision_mask = 1023
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="0" type="CollisionShape2D" parent="Hurtboxes" index="0"]
+
+position = Vector2( 0, -58 )
+shape = SubResource( 11 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 
