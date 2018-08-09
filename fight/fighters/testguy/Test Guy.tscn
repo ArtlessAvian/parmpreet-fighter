@@ -1,16 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fight/fighters/Fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://fight/fighters/testguy/Test Guy Core.tscn" type="PackedScene" id=2]
+[ext_resource path="res://fight/fighters/testguy/Test Guy StateMachine.tscn" type="PackedScene" id=3]
 
 [node name="Test Guy" instance=ExtResource( 1 )]
 
 my_core = ExtResource( 2 )
-
-[node name="StateMachine" parent="." index="1"]
-
-statesListFile = "res://fight/fighters/testguy/states.txt"
-defaultPath = "res://fight/fighters/states/"
+my_state_machine = ExtResource( 3 )
 
 
 [editable path="Core"]

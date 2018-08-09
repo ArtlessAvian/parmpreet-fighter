@@ -1,6 +1,7 @@
 extends Node2D
 
 export (PackedScene) var my_core = null
+export (PackedScene) var my_state_machine = null
 var enemy = null
 
 var vel = Vector2(0,0)
@@ -9,7 +10,7 @@ var air_action = 2
 
 func _ready():
 	get_node("Core").replace_by_instance(my_core)
-	get_node("StateMachine").set_state("Stand")
+	get_node("StateMachine").replace_by_instance(my_state_machine)
 	get_node("StateMachine").observers.push_back(get_node("Core/AnimationPlayer"))
 
 func _physics_process(delta):

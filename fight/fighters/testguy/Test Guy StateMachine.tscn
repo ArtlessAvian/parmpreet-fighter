@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://StateMachine.gd" type="Script" id=1]
+[ext_resource path="res://fight/fighters/states/Stand.gd" type="Script" id=2]
+[ext_resource path="res://fight/fighters/states/AirDash.gd" type="Script" id=3]
+[ext_resource path="res://fight/fighters/states/BackWalk.gd" type="Script" id=4]
+[ext_resource path="res://fight/fighters/states/Crouch.gd" type="Script" id=5]
+[ext_resource path="res://fight/fighters/states/Dash.gd" type="Script" id=6]
+[ext_resource path="res://fight/fighters/states/DoubleJump.gd" type="Script" id=7]
+[ext_resource path="res://fight/fighters/states/Jump.gd" type="Script" id=8]
+[ext_resource path="res://fight/fighters/states/Walk.gd" type="Script" id=9]
+
+[node name="Test Guy StateMachine" type="Node"]
+
+script = ExtResource( 1 )
+subjectPath = ".."
+
+[node name="Stand" type="Node" parent="." index="0"]
+
+script = ExtResource( 2 )
+subjectPath = ".."
+
+[node name="AirDash" type="Node" parent="." index="1"]
+
+script = ExtResource( 3 )
+subjectPath = ".."
+
+[node name="BackWalk" type="Node" parent="." index="2"]
+
+script = ExtResource( 4 )
+subjectPath = ".."
+
+[node name="Crouch" type="Node" parent="." index="3"]
+
+script = ExtResource( 5 )
+subjectPath = ".."
+
+[node name="Dash" type="Node" parent="." index="4"]
+
+script = ExtResource( 6 )
+subjectPath = ".."
+
+[node name="DoubleJump" type="Node" parent="." index="5"]
+
+script = ExtResource( 7 )
+subjectPath = ".."
+
+[node name="Jump" type="Node" parent="." index="6"]
+
+script = ExtResource( 8 )
+subjectPath = ".."
+
+[node name="Walk" type="Node" parent="." index="7"]
+
+script = ExtResource( 9 )
+subjectPath = ".."
+
+

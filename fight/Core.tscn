@@ -9,11 +9,14 @@ onready var hurtboxes = get_node(\"../Hurtboxes\")
 
 # Observer / Facade
 func set_state(state_str):
+	if (state_str == \"DoubleJump\"):
+		state_str = \"Jump\"
 	reset_and_play(state_str)
 
 # Actual Methods
 func reset_and_play(anim_name):
-	self.play(\"Static\")
+	print(anim_name)
+	self.play(\"Rest\")
 	self.advance(1)
 	self.play(anim_name)
 	
