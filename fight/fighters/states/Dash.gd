@@ -14,7 +14,7 @@ func _run(subject, controller):
 	
 	subject.vel.x = (entering_number - 5) * 7;
 
-func _enter(subject, old_state):
-	entering_number = subject.scale.x;
+func _enter(subject, old_state, args):
+	entering_number = args;
 
 func _is_static(): return true

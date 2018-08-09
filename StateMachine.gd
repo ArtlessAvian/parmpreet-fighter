@@ -2,8 +2,8 @@ extends Node
 signal new_state
 
 class State:
-	func _enter(subject, old_state): return
-	func _exit(subject, state_str): return
+	func _enter(subject, controller, old_state, args): return
+	func _exit(subject, controller, state_str): return
 	# return a state name to change state
 	func _run(subject, controller): return
 	func _is_static(): return false
@@ -13,6 +13,8 @@ var states = {}
 var subject = null
 var controller = null
 var current_state = State.new()
+
+var observers = [];
 
 # Implementation Stuff
 export (String) var statesListFile
@@ -43,10 +45,14 @@ func _physics_process(delta):
 		set_state(transition)
 
 func set_state(state_str):
+	
+	for observer in observers:
+		observer.call("set_state", state_str)
+	
 	var old_state = current_state
-	current_state._exit(subject, state_str)
+	var args = current_state._exit(subject, controller, state_str)
 	current_state = new_state_instance(state_str)
-	current_state._enter(subject, old_state)
+	current_state._enter(subject, controller, old_state, args)
 	
 	# Keep the object for later use in the same dictionary
 	if (current_state._is_static()):

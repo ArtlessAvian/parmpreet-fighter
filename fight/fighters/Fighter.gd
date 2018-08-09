@@ -10,11 +10,12 @@ var air_action = 2
 func _ready():
 	get_node("Core").replace_by_instance(my_core)
 	get_node("StateMachine").set_state("Stand")
+	get_node("StateMachine").observers.push_back(get_node("Core/AnimationPlayer"))
 
 func _physics_process(delta):
 	position += vel
 	if (!grounded):
-		vel.y += 1
+		vel.y += 0.5
 		if (position.y > 0):
 			grounded = true
 			position.y = 0
