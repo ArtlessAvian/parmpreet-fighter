@@ -1,5 +1,6 @@
 extends Node2D
 
+var have_hit = false
 var queued_hits = {}
 export (int) var damage = 10
 export (int) var knockback = 40
@@ -11,10 +12,10 @@ func _queue_hit(area):
 	pass # replace with function body
 
 func _dequeue_hit(area):
+	print("---------------- hey this actually happens")
 	if queued_hits.has(area):
 		queued_hits.erase(area)
 	pass # replace with function body
-
 
 func _on_Hurtboxes_area_exited(area):
 	pass # replace with function body

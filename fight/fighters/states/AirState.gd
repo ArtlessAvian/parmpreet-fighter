@@ -1,5 +1,8 @@
-extends "res://StateMachine.gd".State
+extends "PlayerState.gd"
 
+func _ready():
+	attack_pool = "Jumping"
+	
 func air_action(subject, controller):
 	if (subject.air_action <= 0):
 		return

@@ -21,50 +21,82 @@ subjectPath = ".."
 
 script = ExtResource( 2 )
 subjectPath = ".."
+attack_pool = ""
+priority = -1
 
 [node name="AirDash" type="Node" parent="." index="1"]
 
 script = ExtResource( 3 )
 subjectPath = ".."
+attack_pool = ""
+priority = -1
 
 [node name="BackWalk" type="Node" parent="." index="2"]
 
 script = ExtResource( 4 )
 subjectPath = ".."
+attack_pool = ""
+priority = -1
 
 [node name="Crouch" type="Node" parent="." index="3"]
 
 script = ExtResource( 5 )
 subjectPath = ".."
+attack_pool = ""
+priority = -1
 
 [node name="Dash" type="Node" parent="." index="4"]
 
 script = ExtResource( 6 )
 subjectPath = ".."
+attack_pool = ""
+priority = -1
 
 [node name="DoubleJump" type="Node" parent="." index="5"]
 
 script = ExtResource( 7 )
 subjectPath = ".."
+attack_pool = ""
+priority = -1
 
 [node name="Jump" type="Node" parent="." index="6"]
 
 script = ExtResource( 8 )
 subjectPath = ".."
+attack_pool = ""
+priority = -1
 
 [node name="Walk" type="Node" parent="." index="7"]
 
 script = ExtResource( 9 )
 subjectPath = ".."
+attack_pool = ""
+priority = -1
 
 [node name="Reel" type="Node" parent="." index="8"]
 
 script = ExtResource( 10 )
 subjectPath = ".."
 
-[node name="Light" type="Node" parent="." index="9"]
+[node name="StandingLight" type="Node" parent="." index="9"]
 
 script = ExtResource( 11 )
 subjectPath = ".."
+attack_pool = ""
+priority = -1
+
+[node name="StandingMedium" type="Node" parent="." index="10"]
+
+script = ExtResource( 11 )
+subjectPath = ".."
+attack_pool = ""
+priority = -1
+
+[node name="StandingHeavy" type="Node" parent="." index="11"]
+
+script = ExtResource( 11 )
+subjectPath = ".."
+attack_pool = ""
+priority = -1
 
 

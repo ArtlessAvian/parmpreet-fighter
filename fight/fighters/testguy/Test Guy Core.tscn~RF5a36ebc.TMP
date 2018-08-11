@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://fight/Core.gd" type="Script" id=1]
 [ext_resource path="res://res/spritesheet test.png" type="Texture" id=2]
@@ -235,85 +235,6 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=15]
-
-resource_name = "StandingHeavy"
-length = 26.0
-loop = false
-step = 1.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 14, 18, 22 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 2, 5, 6, 7 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 13 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1440.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Hitboxes/0:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 18, 22 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:knockback")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 18 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 160 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Hitboxes/0:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 18 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 3, 3 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Hitboxes/0:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 18 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 44.488, -42.8992 ) ]
-}
-
 [sub_resource type="Animation" id=9]
 
 length = 10.0
@@ -366,109 +287,6 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:damage")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 4 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 10 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:knockback")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 4 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 40 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath(".:hitstun")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 4 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 20 ]
-}
-
-[sub_resource type="Animation" id=14]
-
-resource_name = "StandingMedium"
-length = 26.0
-loop = false
-step = 1.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 9, 11, 13, 18, 20 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 6, 4, 5, 6 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Hitboxes/0:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 11, 12, 20, 21 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Hitboxes/0:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 11, 20 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 3, 3 ), Vector2( 3, 3 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Hitboxes/0:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 11, 20 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 44.488, -42.8992 ), Vector2( 44.488, -42.8992 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:knockback")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 11, 20 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 40 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -536,7 +354,7 @@ __meta__ = {
 }
 damage = 10
 knockback = 40
-hitstun = 40
+hitstun = 20
 priority = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
@@ -554,9 +372,7 @@ anims/Jump = SubResource( 5 )
 anims/Reel = SubResource( 6 )
 anims/Rest = SubResource( 7 )
 anims/Stand = SubResource( 8 )
-anims/StandingHeavy = SubResource( 15 )
 anims/StandingLight = SubResource( 9 )
-anims/StandingMedium = SubResource( 14 )
 anims/Walk = SubResource( 10 )
 blend_times = [  ]
 script = SubResource( 11 )
@@ -565,13 +381,11 @@ _sections_unfolded = [ "Playback Options" ]
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
 position = Vector2( 0, -64 )
-rotation = 25.1327
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 8
-frame = 6
-_sections_unfolded = [ "Animation", "Region", "Transform", "Visibility" ]
+_sections_unfolded = [ "Animation", "Transform", "Visibility" ]
 
 [node name="Hitboxes" type="Area2D" parent="." index="2"]
 
@@ -593,8 +407,9 @@ __meta__ = {
 [node name="0" type="CollisionShape2D" parent="Hitboxes" index="0"]
 
 position = Vector2( 44.488, -42.8992 )
-scale = Vector2( 3, 3 )
+scale = Vector2( 1, 3 )
 shape = SubResource( 12 )
+disabled = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Hurtboxes" type="Area2D" parent="." index="3"]

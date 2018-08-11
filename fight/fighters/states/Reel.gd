@@ -9,7 +9,6 @@ var hitter = null;
 func _run(subject, controller):
 	
 	subject.vel.x = 2 * knockback / hitstun * (1 - frame_no * 1.0 / hitstun)
-	print(subject.vel.x)
 	
 	subject.vel.x *= dir
 	frame_no += 1

@@ -1,4 +1,7 @@
-extends "res://StateMachine.gd".State
+extends "PlayerState.gd"
+
+func _ready():
+	attack_pool = "Standing"
 
 func grounded_check(subject, controller):
 #	reset_hitboxes()
@@ -8,12 +11,6 @@ func grounded_check(subject, controller):
 	
 	if (controller.dir() >= 7):
 		return "Jump"
-	
-	# Supers
-	
-	# Special Attacks
-	
-	# Attacks
 	
 	if (controller.dir() <= 3):
 		return "Crouch"

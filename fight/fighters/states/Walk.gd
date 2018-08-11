@@ -10,6 +10,10 @@ func _run(subject, controller):
 		subject.scale.x *= -1
 		return "BackWalk"
 	
+	var try_attack = try_attack(subject, controller)
+	if (try_attack != ""):
+		return try_attack
+	
 	if (subject.scale.x * (subject.enemy.position.x - subject.position.x) < 0):
 		subject.scale.x *= -1
 	

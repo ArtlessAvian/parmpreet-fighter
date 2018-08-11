@@ -14,7 +14,9 @@ func _ready():
 	get_node("StateMachine").observers.push_back(get_node("Core/AnimationPlayer"))
 
 func _physics_process(delta):
+#	TODO: Disable this method, and have an external object call these in the same order
 	move(delta)
+	adjust()
 	check_hit()
 	get_hit()
 
@@ -29,6 +31,16 @@ func move(delta):
 			air_action = 2
 			$StateMachine.set_state("Stand")
 
+func adjust():
+#	I guess it doesn't matter what order who does this, because itll be symmetrical?	
+	if (self.grounded and enemy.grounded):
+		var relat_vec = enemy.position.x - self.position.x
+		if (abs(relat_vec) < 40):
+#			var distance = min((40 - abs(relat_vec))/2, 1) bad gameplay choice ig
+			var distance = (40 - abs(relat_vec))/2
+			self.position.x += -distance * sign(relat_vec)
+			enemy.position.x += distance * sign(relat_vec)
+
 func check_hit():
 	var hits = []
 	var highest_priority = {"priority":-999}
@@ -38,6 +50,7 @@ func check_hit():
 		if (hit["priority"] > highest_priority["priority"]):
 			highest_priority = $Core.queued_hits[hit]
 		print("hit!!!")
+		$Core.queued_hits[hit]["hitter"].have_hit = true;
 	
 	if (!hits.empty()):
 		$StateMachine.set_state("Reel", highest_priority)

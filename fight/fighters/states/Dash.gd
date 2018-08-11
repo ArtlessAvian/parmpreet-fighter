@@ -6,6 +6,13 @@ func _run(subject, controller):
 	if (controller.dir() >= 7):
 		return "Jump"
 	
+	if (controller.dir() <= 3):
+		return "Crouch"
+	
+	var try_attack = try_attack(subject, controller)
+	if (try_attack != ""):
+		return try_attack
+	
 	if (subject.get_node("Core/AnimationPlayer").current_animation == ""):
 		if (controller.dir() == entering_number):
 			# run?
