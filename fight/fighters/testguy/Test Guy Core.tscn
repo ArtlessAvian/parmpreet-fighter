@@ -6,7 +6,7 @@
 [sub_resource type="Animation" id=1]
 
 resource_name = "AirDash"
-length = 12.0
+length = 24.0
 loop = false
 step = 1.0
 tracks/0/type = "value"
@@ -16,10 +16,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 6, 12 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 6, 12, 18, 24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -125,7 +125,7 @@ tracks/1/keys = {
 resource_name = "Reel"
 length = 4.08
 loop = true
-step = 1.0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -235,7 +235,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=9]
 
 resource_name = "StandingHeavy"
 length = 26.0
@@ -314,7 +314,7 @@ tracks/5/keys = {
 "values": [ Vector2( 44.488, -42.8992 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
 length = 10.0
 loop = false
@@ -404,7 +404,7 @@ tracks/6/keys = {
 "values": [ 20 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=11]
 
 resource_name = "StandingMedium"
 length = 26.0
@@ -471,7 +471,7 @@ tracks/4/keys = {
 "values": [ 0, 40 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=12]
 
 length = 25.0
 loop = true
@@ -489,7 +489,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12 ]
 }
 
-[sub_resource type="GDScript" id=11]
+[sub_resource type="GDScript" id=13]
 
 script/source = "extends AnimationPlayer
 
@@ -516,18 +516,18 @@ func reset_and_play(anim_name):
 #	for hurtbox in hurtboxes.get_children():
 #		hurtbox.set_disabled(true)"
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=14]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="CapsuleShape2D" id=13]
+[sub_resource type="CapsuleShape2D" id=15]
 
 custom_solver_bias = 0.0
 radius = 19.8552
 height = 74.1223
 
-[node name="Test Guy Core" type="Node2D" index="0"]
+[node name="Test Guy Core" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Playback Options", "Transform", "Z Index" ]
@@ -554,23 +554,21 @@ anims/Jump = SubResource( 5 )
 anims/Reel = SubResource( 6 )
 anims/Rest = SubResource( 7 )
 anims/Stand = SubResource( 8 )
-anims/StandingHeavy = SubResource( 15 )
-anims/StandingLight = SubResource( 9 )
-anims/StandingMedium = SubResource( 14 )
-anims/Walk = SubResource( 10 )
+anims/StandingHeavy = SubResource( 9 )
+anims/StandingLight = SubResource( 10 )
+anims/StandingMedium = SubResource( 11 )
+anims/Walk = SubResource( 12 )
 blend_times = [  ]
-script = SubResource( 11 )
+script = SubResource( 13 )
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
 position = Vector2( 0, -64 )
-rotation = 25.1327
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 8
-frame = 6
 _sections_unfolded = [ "Animation", "Region", "Transform", "Visibility" ]
 
 [node name="Hitboxes" type="Area2D" parent="." index="2"]
@@ -594,7 +592,7 @@ __meta__ = {
 
 position = Vector2( 44.488, -42.8992 )
 scale = Vector2( 3, 3 )
-shape = SubResource( 12 )
+shape = SubResource( 14 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Hurtboxes" type="Area2D" parent="." index="3"]
@@ -617,7 +615,7 @@ __meta__ = {
 [node name="0" type="CollisionShape2D" parent="Hurtboxes" index="0"]
 
 position = Vector2( 0, -58 )
-shape = SubResource( 13 )
+shape = SubResource( 15 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [connection signal="area_entered" from="Hurtboxes" to="." method="_queue_hit"]

@@ -1,9 +1,9 @@
 extends Node
 
-var a1_id = -1
-var a2_id = -1
-var b1_id = -1
-var b2_id = -1
+var a1_id = 0
+var a2_id = 0
+var b1_id = 0
+var b2_id = 0
 
 var fighters = {
 	0 : preload("res://fight/fighters/testguy/Test Guy.tscn")

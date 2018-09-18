@@ -7,6 +7,7 @@ func _run(subject, controller):
 		return try_attack
 	
 	if (subject.get_node("Core/AnimationPlayer").current_animation == ""):
+#		subject.vel.x = 0
 		if (controller.dir() != 5):
 			return self.air_action(subject, controller)
 	

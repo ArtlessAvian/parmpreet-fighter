@@ -1,5 +1,7 @@
 extends Node2D
 
+var hitstop = 0
+
 var have_hit = false
 var queued_hits = {}
 export (int) var damage = 10

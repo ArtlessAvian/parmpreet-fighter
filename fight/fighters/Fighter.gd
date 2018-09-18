@@ -4,17 +4,31 @@ export (PackedScene) var my_core = null
 export (PackedScene) var my_state_machine = null
 var enemy = null
 
+var enemy_combo = 0
+
 var vel = Vector2(0,0)
 var grounded = true
 var air_action = 2
 
 func _ready():
-	get_node("Core").replace_by_instance(my_core)
-	get_node("StateMachine").replace_by_instance(my_state_machine)
-	get_node("StateMachine").observers.push_back(get_node("Core/AnimationPlayer"))
+	$Core.replace_by_instance(my_core)
+	$StateMachine.replace_by_instance(my_state_machine)
+	$StateMachine.observers.push_back(get_node("Core/AnimationPlayer"))
+	
+	$Core/AnimationPlayer.playback_active = false
+	$StateMachine.set_physics_process(false)
 
 func _physics_process(delta):
+	if ($Core.hitstop > 0):
+		if (enemy_combo > 0):
+			$Core.modulate.g = 1.0 / $Core.hitstop
+			$Core.modulate.b = 1.0 / $Core.hitstop
+		$Core.hitstop -= 1
+		return
+	
 #	TODO: Disable this method, and have an external object call these in the same order
+	$StateMachine._physics_process(delta)
+	$Core/AnimationPlayer.advance(1.0/60)
 	move(delta)
 	adjust()
 	check_hit()
@@ -49,8 +63,12 @@ func check_hit():
 		hits.push_back(hit)
 		if (hit["priority"] > highest_priority["priority"]):
 			highest_priority = $Core.queued_hits[hit]
-		print("hit!!!")
+		enemy_combo += 1
+		print("hit!!!" + str(enemy_combo))
 		$Core.queued_hits[hit]["hitter"].have_hit = true;
+		
+		$Core.hitstop = 7
+		$Core.queued_hits[hit]["hitter"].hitstop = 7
 	
 	if (!hits.empty()):
 		$StateMachine.set_state("Reel", highest_priority)

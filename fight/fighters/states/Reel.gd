@@ -14,6 +14,7 @@ func _run(subject, controller):
 	frame_no += 1
 	
 	if (frame_no >= hitstun):
+		subject.enemy_combo = 0
 		return "Stand"
 
 func _enter(subject, controller, old_state, args):

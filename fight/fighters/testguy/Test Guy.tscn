@@ -6,12 +6,9 @@
 
 [node name="Test Guy" instance=ExtResource( 1 )]
 
+_sections_unfolded = [ "Visibility" ]
 my_core = ExtResource( 2 )
 my_state_machine = ExtResource( 3 )
-
-[node name="Core" parent="." index="0"]
-
-hitstun = 20
 
 
 [editable path="Core"]
