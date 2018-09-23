@@ -13,7 +13,7 @@ func try_attack(subject, controller):
 #
 #	if (attack_pool != "Standing"):
 #		print("icu, but pretend this is " + attack_pool)
-	attack_pool = "Standing"
+#	attack_pool = "Standing"
 	
 #	for subject.supers
 #		check
@@ -24,12 +24,15 @@ func try_attack(subject, controller):
 #			goto
 #	
 	
-	if (priority < 6 and Input.is_action_just_pressed(controller.focus + "_heavy")):
+#	if (priority < 6 and Input.is_action_just_pressed(controller.focus + "_heavy")):
+#		if (self.name != (attack_pool + "Heavy")):
+#			return attack_pool + "Heavy"
+#	if (priority < 4 and Input.is_action_just_pressed(controller.focus + "_medium")):
+#		if (self.name != (attack_pool + "Medium")):
+#			return attack_pool + "Medium"
+	if (priority < 4 and Input.is_action_just_pressed(controller.focus + "_medium")):
 		if (self.name != (attack_pool + "Heavy")):
 			return attack_pool + "Heavy"
-	if (priority < 4 and Input.is_action_just_pressed(controller.focus + "_medium")):
-		if (self.name != (attack_pool + "Medium")):
-			return attack_pool + "Medium"
 	if (priority < 2 and Input.is_action_just_pressed(controller.focus + "_light")):
 		if (self.name != (attack_pool + "Light")):
 			return attack_pool + "Light"

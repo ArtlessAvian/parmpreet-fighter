@@ -28,7 +28,7 @@ func reset_and_play(anim_name):
 #	for hurtbox in hurtboxes.get_children():
 #		hurtbox.set_disabled(true)"
 
-[node name="Core" type="Node2D" index="0"]
+[node name="Core" type="Node2D"]
 
 script = ExtResource( 1 )
 __meta__ = {

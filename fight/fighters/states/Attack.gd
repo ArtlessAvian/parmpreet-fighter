@@ -1,5 +1,9 @@
 extends "PlayerState.gd"
 
+export (float, 0, 10) var damage = 1
+export (float) var knockback = 40
+export (float) var hitstun = 20
+
 func _run(subject, controller):
 	
 	if (subject.get_node("Core").have_hit):
@@ -16,7 +20,10 @@ func _run(subject, controller):
 	
 	if (subject.get_node("Core/AnimationPlayer").current_animation == ""):
 		if (subject.grounded):
-			return "Stand"
+			if (controller.dir() > 3):
+				return "Stand"
+			else:
+				return "Crouch"
 		else:
 			return "Jump"
 
@@ -24,6 +31,10 @@ func _enter(subject, controller, old_state, args):
 #	if (old_state.attack_pool == "Standing"):
 	if (subject.grounded):
 		subject.vel.x = 0
+	
+	subject.get_node("Core").damage = damage
+	subject.get_node("Core").knockback = knockback
+	subject.get_node("Core").hitstun = hitstun
 
 func _exit(subject, controller, state_str):
 	subject.get_node("Core").have_hit = false;

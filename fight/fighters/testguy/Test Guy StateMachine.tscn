@@ -84,19 +84,58 @@ script = ExtResource( 11 )
 subjectPath = ".."
 attack_pool = ""
 priority = -1
+damage = 1
+knockback = 40
+hitstun = 20
 
-[node name="StandingMedium" type="Node" parent="." index="10"]
-
-script = ExtResource( 11 )
-subjectPath = ".."
-attack_pool = ""
-priority = -1
-
-[node name="StandingHeavy" type="Node" parent="." index="11"]
+[node name="StandingHeavy" type="Node" parent="." index="10"]
 
 script = ExtResource( 11 )
 subjectPath = ".."
 attack_pool = ""
 priority = -1
+damage = 1
+knockback = 40
+hitstun = 20
+
+[node name="CrouchingLight" type="Node" parent="." index="11"]
+
+script = ExtResource( 11 )
+subjectPath = ".."
+attack_pool = ""
+priority = -1
+damage = 1
+knockback = 40
+hitstun = 20
+
+[node name="CrouchingHeavy" type="Node" parent="." index="12"]
+
+script = ExtResource( 11 )
+subjectPath = ".."
+attack_pool = ""
+priority = -1
+damage = 2.0
+knockback = 160.0
+hitstun = 20.0
+
+[node name="JumpingLight" type="Node" parent="." index="13"]
+
+script = ExtResource( 11 )
+subjectPath = ".."
+attack_pool = ""
+priority = -1
+damage = 1
+knockback = 40
+hitstun = 20
+
+[node name="JumpingHeavy" type="Node" parent="." index="14"]
+
+script = ExtResource( 11 )
+subjectPath = ".."
+attack_pool = ""
+priority = -1
+damage = 2.0
+knockback = 0.0
+hitstun = 40.0
 
 
