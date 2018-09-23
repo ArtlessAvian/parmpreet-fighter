@@ -1,4 +1,5 @@
 extends Node2D
+signal got_hit(enemy_combo)
 
 export (PackedScene) var my_core = null
 export (PackedScene) var my_state_machine = null
@@ -13,7 +14,7 @@ var air_action = 2
 func _ready():
 	$Core.replace_by_instance(my_core)
 	$StateMachine.replace_by_instance(my_state_machine)
-	$StateMachine.observers.push_back(get_node("Core/AnimationPlayer"))
+	$StateMachine.connect("new_state", $Core, "_on_StateMachine_new_state")
 	
 	$Core/AnimationPlayer.playback_active = false
 	$StateMachine.set_physics_process(false)
@@ -65,10 +66,12 @@ func check_hit():
 			highest_priority = $Core.queued_hits[hit]
 		enemy_combo += 1
 		print("hit!!!" + str(enemy_combo))
-		$Core.queued_hits[hit]["hitter"].have_hit = true;
 		
+		$Core.queued_hits[hit]["hitter"].have_hit = true;
 		$Core.hitstop = 7
 		$Core.queued_hits[hit]["hitter"].hitstop = 7
+		
+		emit_signal("got_hit", enemy_combo)
 	
 	if (!hits.empty()):
 		$StateMachine.set_state("Reel", highest_priority)

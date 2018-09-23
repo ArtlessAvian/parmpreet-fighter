@@ -21,3 +21,9 @@ func _dequeue_hit(area):
 
 func _on_Hurtboxes_area_exited(area):
 	pass # replace with function body
+
+
+func _on_StateMachine_new_state(state_str):
+	print("recieved!")
+	$AnimationPlayer.set_state(state_str)
+	print("handled!")

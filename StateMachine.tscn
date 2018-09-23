@@ -2,11 +2,9 @@
 
 [ext_resource path="res://StateMachine.gd" type="Script" id=1]
 
-[node name="StateMachine" type="Node" index="0"]
+[node name="StateMachine" type="Node"]
 
 script = ExtResource( 1 )
-statesListFile = null
-defaultPath = "res://"
 subjectPath = NodePath("..")
 
 

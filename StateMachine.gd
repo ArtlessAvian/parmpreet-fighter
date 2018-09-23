@@ -1,5 +1,5 @@
 extends Node
-signal new_state
+signal new_state(state_str)
 
 class State:
 	extends Node
@@ -13,8 +13,6 @@ var subject = null
 var controller = null
 onready var current_state = get_child(0);
 
-var observers = [];
-
 export (NodePath) var subjectPath = ".."
 
 func _ready():
@@ -27,8 +25,9 @@ func _physics_process(delta):
 
 func set_state(state_str, args={}):
 	
-	for observer in observers:
-		observer.call("set_state", state_str)
+	print("emitting!")
+	emit_signal("new_state", state_str)
+	print("emitted")
 	
 	var old_state = current_state
 	

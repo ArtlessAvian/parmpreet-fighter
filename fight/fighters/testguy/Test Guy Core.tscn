@@ -668,7 +668,7 @@ custom_solver_bias = 0.0
 radius = 19.8552
 height = 74.1223
 
-[node name="Test Guy Core" type="Node2D" index="0"]
+[node name="Test Guy Core" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Playback Options", "Transform", "Z Index" ]
