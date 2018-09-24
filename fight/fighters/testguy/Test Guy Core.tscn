@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://fight/Core.gd" type="Script" id=1]
-[ext_resource path="res://res/spritesheet test.png" type="Texture" id=2]
+[ext_resource path="res://fight/CoreAnimationPlayer.gd" type="Script" id=2]
+[ext_resource path="res://res/spritesheet test.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -59,7 +60,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 0.5 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 
 resource_name = "CrouchingHeavy"
 length = 26.0
@@ -126,7 +127,7 @@ tracks/4/keys = {
 "values": [ Vector2( 44.488, -42.8992 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=5]
 
 resource_name = "CrouchingLight"
 length = 10.0
@@ -193,7 +194,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 0.5 ), Vector2( 1, 0.5 ), Vector2( 2, 0.4 ), Vector2( 1, 0.5 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 
 length = 30.0
 loop = false
@@ -223,9 +224,8 @@ tracks/1/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 
-resource_name = "Jump"
 length = 30.0
 loop = false
 step = 1.0
@@ -254,10 +254,10 @@ tracks/1/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=8]
 
 resource_name = "JumpingHeavy"
-length = 42.0
+length = 26.0
 loop = false
 step = 1.0
 tracks/0/type = "value"
@@ -321,7 +321,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=9]
 
 resource_name = "JumpingLight"
 length = 600.0
@@ -376,9 +376,8 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=10]
 
-resource_name = "Reel"
 length = 4.08
 loop = true
 step = 0.1
@@ -407,7 +406,7 @@ tracks/1/keys = {
 "values": [ 0.0, 10.0, -10.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=11]
 
 length = 1.0
 loop = true
@@ -473,7 +472,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=12]
 
 length = 20.0
 loop = true
@@ -491,9 +490,8 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=13]
 
-resource_name = "StandingHeavy"
 length = 26.0
 loop = false
 step = 1.0
@@ -558,7 +556,7 @@ tracks/4/keys = {
 "values": [ 0, 40 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=14]
 
 length = 10.0
 loop = false
@@ -612,7 +610,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=15]
 
 length = 25.0
 loop = true
@@ -630,45 +628,28 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12 ]
 }
 
-[sub_resource type="GDScript" id=13]
-
-script/source = "extends AnimationPlayer
-
-onready var hitboxes = get_node(\"../Hitboxes\")
-onready var hurtboxes = get_node(\"../Hurtboxes\")
-
-# Observer / Facade
-func set_state(state_str):
-	if (state_str == \"DoubleJump\"):
-		state_str = \"Jump\"
-	reset_and_play(state_str)
-
-# Actual Methods
-func reset_and_play(anim_name):
-	print(anim_name)
-	self.play(\"Rest\")
-	self.advance(1)
-	self.play(anim_name)
-	
-	for hitbox in hitboxes.get_children():
-		hitbox.set_disabled(true)
-		hitbox.scale.x = 0
-		hitbox.scale.y = 0
-#	for hurtbox in hurtboxes.get_children():
-#		hurtbox.set_disabled(true)"
-
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=16]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="CapsuleShape2D" id=15]
+[sub_resource type="CapsuleShape2D" id=17]
 
 custom_solver_bias = 0.0
 radius = 19.8552
 height = 74.1223
 
-[node name="Test Guy Core" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=18]
+
+custom_solver_bias = 0.0
+extents = Vector2( 40.915, 11.7628 )
+
+[sub_resource type="RectangleShape2D" id=19]
+
+custom_solver_bias = 0.0
+extents = Vector2( 33.0074, 11.7628 )
+
+[node name="Test Guy Core" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Playback Options", "Transform", "Z Index" ]
@@ -679,6 +660,8 @@ damage = 10
 knockback = 40
 hitstun = 20
 priority = 0
+max_health = 20
+health = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 
@@ -690,30 +673,29 @@ playback_speed = 60.0
 anims/AirDash = SubResource( 1 )
 anims/BackWalk = SubResource( 2 )
 anims/Crouch = SubResource( 3 )
-anims/CrouchingHeavy = SubResource( 9 )
-anims/CrouchingLight = SubResource( 16 )
-anims/Dash = SubResource( 4 )
-anims/Jump = SubResource( 5 )
-anims/JumpingHeavy = SubResource( 18 )
-anims/JumpingLight = SubResource( 17 )
-anims/Reel = SubResource( 6 )
-anims/Rest = SubResource( 7 )
-anims/Stand = SubResource( 8 )
-anims/StandingHeavy = SubResource( 11 )
-anims/StandingLight = SubResource( 10 )
-anims/Walk = SubResource( 12 )
+anims/CrouchingHeavy = SubResource( 4 )
+anims/CrouchingLight = SubResource( 5 )
+anims/Dash = SubResource( 6 )
+anims/Jump = SubResource( 7 )
+anims/JumpingHeavy = SubResource( 8 )
+anims/JumpingLight = SubResource( 9 )
+anims/Reel = SubResource( 10 )
+anims/Rest = SubResource( 11 )
+anims/Stand = SubResource( 12 )
+anims/StandingHeavy = SubResource( 13 )
+anims/StandingLight = SubResource( 14 )
+anims/Walk = SubResource( 15 )
 blend_times = [  ]
-script = SubResource( 13 )
+script = ExtResource( 2 )
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
 position = Vector2( 0, -64 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 vframes = 8
 hframes = 8
-frame = 2
 _sections_unfolded = [ "Animation", "Region", "Transform", "Visibility" ]
 
 [node name="Hitboxes" type="Area2D" parent="." index="2"]
@@ -735,8 +717,9 @@ __meta__ = {
 
 [node name="0" type="CollisionShape2D" parent="Hitboxes" index="0"]
 
-scale = Vector2( 5, 2 )
-shape = SubResource( 14 )
+scale = Vector2( 1e-005, 1e-005 )
+shape = SubResource( 16 )
+disabled = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Hurtboxes" type="Area2D" parent="." index="3"]
@@ -759,7 +742,19 @@ __meta__ = {
 [node name="0" type="CollisionShape2D" parent="Hurtboxes" index="0"]
 
 position = Vector2( 0, -58 )
-shape = SubResource( 15 )
+shape = SubResource( 17 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="1" type="CollisionShape2D" parent="Hurtboxes" index="1"]
+
+position = Vector2( 0.970612, -62.853 )
+shape = SubResource( 18 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="2" type="CollisionShape2D" parent="Hurtboxes" index="2"]
+
+position = Vector2( 2.04607, -13.0234 )
+shape = SubResource( 19 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [connection signal="area_entered" from="Hurtboxes" to="." method="_queue_hit"]

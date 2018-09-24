@@ -25,9 +25,7 @@ func _physics_process(delta):
 
 func set_state(state_str, args={}):
 	
-	print("emitting!")
 	emit_signal("new_state", state_str)
-	print("emitted")
 	
 	var old_state = current_state
 	

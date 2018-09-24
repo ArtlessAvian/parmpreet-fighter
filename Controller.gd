@@ -30,7 +30,7 @@ func _process(delta):
 	if (buffer[0] != buffer[1]):
 		change_buffer.push_front(buffer[0])
 		change_buffer.pop_back();
-
+	
 func dir():
 	return buffer[0]
 

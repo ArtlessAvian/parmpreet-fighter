@@ -9,6 +9,9 @@ export (int) var knockback = 40
 export (int) var hitstun = 20
 export (int) var priority = 0
 
+export (int) var max_health = 20
+export (float) var health = 20
+
 func _queue_hit(area):
 	queued_hits[area] = {"hitter":area.get_parent(), "priority":area.get_parent().priority, "knockback":area.get_parent().knockback, "hitstun":area.get_parent().hitstun, "damage":area.get_parent().damage}
 	pass # replace with function body
@@ -24,6 +27,4 @@ func _on_Hurtboxes_area_exited(area):
 
 
 func _on_StateMachine_new_state(state_str):
-	print("recieved!")
 	$AnimationPlayer.set_state(state_str)
-	print("handled!")

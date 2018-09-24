@@ -30,8 +30,6 @@ func init_fight(fight_node):
 	flip_collision(b1)
 
 func flip_collision(p2):
-#	2^0 + 2^10	
-	p2.get_node("Core/Hitboxes").collision_layer = (1025) ^ p2.get_node("Core/Hitboxes").collision_layer
-	
-#	2^20 - 1 == 2^0 + 2^1 + 2^2 ... 2^19
-	p2.get_node("Core/Hurtboxes").collision_mask = (1048575) ^ p2.get_node("Core/Hitboxes").collision_mask
+	# opposite of default
+	p2.get_node("Core/Hitboxes").collision_layer = 1
+	p2.get_node("Core/Hurtboxes").collision_mask = 1047552

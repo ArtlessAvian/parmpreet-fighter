@@ -1,5 +1,6 @@
 extends Node2D
-signal got_hit(enemy_combo)
+signal got_hit(health, enemy_combo)
+signal combo_escape()
 
 export (PackedScene) var my_core = null
 export (PackedScene) var my_state_machine = null
@@ -62,16 +63,18 @@ func check_hit():
 	
 	for hit in $Core.queued_hits:
 		hits.push_back(hit)
-		if (hit["priority"] > highest_priority["priority"]):
-			highest_priority = $Core.queued_hits[hit]
+		var data = $Core.queued_hits[hit]
+		if (data["priority"] > highest_priority["priority"]):
+			highest_priority = data
 		enemy_combo += 1
-		print("hit!!!" + str(enemy_combo))
 		
-		$Core.queued_hits[hit]["hitter"].have_hit = true;
 		$Core.hitstop = 7
-		$Core.queued_hits[hit]["hitter"].hitstop = 7
+		data["hitter"].hitstop = 7
 		
-		emit_signal("got_hit", enemy_combo)
+		data["hitter"].have_hit = true;
+		$Core.health -= data["damage"]
+		
+		emit_signal("got_hit", $Core.health, enemy_combo)
 	
 	if (!hits.empty()):
 		$StateMachine.set_state("Reel", highest_priority)
