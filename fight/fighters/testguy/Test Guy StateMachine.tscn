@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://fight/fighters/states/Stand.gd" type="Script" id=2]
@@ -10,9 +10,10 @@
 [ext_resource path="res://fight/fighters/states/Jump.gd" type="Script" id=8]
 [ext_resource path="res://fight/fighters/states/Walk.gd" type="Script" id=9]
 [ext_resource path="res://fight/fighters/states/Reel.gd" type="Script" id=10]
-[ext_resource path="res://fight/fighters/states/Attack.gd" type="Script" id=11]
+[ext_resource path="res://fight/fighters/states/BlockStun.gd" type="Script" id=11]
+[ext_resource path="res://fight/fighters/states/Attack.gd" type="Script" id=12]
 
-[node name="Test Guy StateMachine" type="Node"]
+[node name="Test Guy StateMachine" type="Node" index="0"]
 
 script = ExtResource( 1 )
 subjectPath = ".."
@@ -78,64 +79,83 @@ priority = -1
 script = ExtResource( 10 )
 subjectPath = ".."
 
-[node name="StandingLight" type="Node" parent="." index="9"]
+[node name="BlockStun" type="Node" parent="." index="9"]
 
 script = ExtResource( 11 )
+subjectPath = ".."
+attack_pool = ""
+priority = -1
+
+[node name="StandingLight" type="Node" parent="." index="10"]
+
+script = ExtResource( 12 )
 subjectPath = ".."
 attack_pool = ""
 priority = -1
 damage = 1
 knockback = 40
 hitstun = 20
+low = false
+high = false
 
-[node name="StandingHeavy" type="Node" parent="." index="10"]
+[node name="StandingHeavy" type="Node" parent="." index="11"]
 
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 subjectPath = ".."
 attack_pool = ""
 priority = -1
 damage = 1
 knockback = 40
 hitstun = 20
+low = false
+high = false
 
-[node name="CrouchingLight" type="Node" parent="." index="11"]
+[node name="CrouchingLight" type="Node" parent="." index="12"]
 
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 subjectPath = ".."
 attack_pool = ""
 priority = -1
 damage = 1
 knockback = 40
 hitstun = 20
+low = true
+high = false
 
-[node name="CrouchingHeavy" type="Node" parent="." index="12"]
+[node name="CrouchingHeavy" type="Node" parent="." index="13"]
 
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 subjectPath = ".."
 attack_pool = ""
 priority = -1
 damage = 2.0
 knockback = 160.0
 hitstun = 20.0
+low = false
+high = false
 
-[node name="JumpingLight" type="Node" parent="." index="13"]
+[node name="JumpingLight" type="Node" parent="." index="14"]
 
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 subjectPath = ".."
 attack_pool = ""
 priority = -1
 damage = 1
 knockback = 40
 hitstun = 20
+low = false
+high = true
 
-[node name="JumpingHeavy" type="Node" parent="." index="14"]
+[node name="JumpingHeavy" type="Node" parent="." index="15"]
 
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 subjectPath = ".."
 attack_pool = ""
 priority = -1
 damage = 2.0
-knockback = 0.0
+knockback = 40
 hitstun = 40.0
+low = false
+high = true
 
 

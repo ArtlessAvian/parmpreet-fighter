@@ -4,10 +4,11 @@ onready var hitboxes = get_node("../Hitboxes")
 onready var hurtboxes = get_node("../Hurtboxes")
 
 # Observer / Facade
-func set_state(state_str):
-	if (state_str == "DoubleJump"):
-		state_str = "Jump"
-	reset_and_play(state_str)
+func set_state(current_state):
+	var name = current_state.name
+	if (current_state.has_method("animation_name")):
+		name = current_state.animation_name()
+	reset_and_play(name)
 
 # Actual Methods
 func reset_and_play(anim_name):

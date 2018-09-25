@@ -26,6 +26,7 @@ func _physics_process(delta):
 			$Core.modulate.g = 1.0 / $Core.hitstop
 			$Core.modulate.b = 1.0 / $Core.hitstop
 		$Core.hitstop -= 1
+		$Core/AnimationPlayer.advance(0)
 		return
 	
 #	TODO: Disable this method, and have an external object call these in the same order
@@ -62,14 +63,23 @@ func check_hit():
 	var highest_priority = {"priority":-999}
 	
 	for hit in $Core.queued_hits:
-		hits.push_back(hit)
 		var data = $Core.queued_hits[hit]
-		if (data["priority"] > highest_priority["priority"]):
-			highest_priority = data
-		enemy_combo += 1
 		
 		$Core.hitstop = 7
 		data["hitter"].hitstop = 7
+		
+		# holding back and (in the air or (holding down on a low) or (not holding down on an overhead) or is mid)
+#		if ($StateMachine.current_state):
+		if (-1 + 2 * ($StateMachine.controller.dir() % 3) == self.scale.x):
+			if (!self.grounded or (!data["low"] and !data["high"]) or ($StateMachine.controller.dir() <= 3 and data["low"]) or ($StateMachine.controller.dir() > 3 and data["high"])):
+				$Core.queued_hits.erase(hit)
+				$StateMachine.set_state("BlockStun", $StateMachine.controller.dir() <= 3)
+				continue;
+		
+		hits.push_back(hit)
+		if (data["priority"] > highest_priority["priority"]):
+			highest_priority = data
+		enemy_combo += 1
 		
 		data["hitter"].have_hit = true;
 		$Core.health -= data["damage"]

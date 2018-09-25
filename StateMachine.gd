@@ -24,9 +24,6 @@ func _physics_process(delta):
 		set_state(transition)
 
 func set_state(state_str, args={}):
-	
-	emit_signal("new_state", state_str)
-	
 	var old_state = current_state
 	
 	var exiting = current_state._exit(subject, controller, state_str)
@@ -35,3 +32,5 @@ func set_state(state_str, args={}):
 		
 	current_state = find_node(state_str)
 	current_state._enter(subject, controller, old_state, args)
+	
+	emit_signal("new_state", current_state)

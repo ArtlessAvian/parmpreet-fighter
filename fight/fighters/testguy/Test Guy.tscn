@@ -10,5 +10,10 @@ _sections_unfolded = [ "Visibility" ]
 my_core = ExtResource( 2 )
 my_state_machine = ExtResource( 3 )
 
+[node name="Core" parent="." index="0"]
+
+low = false
+high = false
+
 
 [editable path="Core"]

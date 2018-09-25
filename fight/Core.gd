@@ -8,12 +8,22 @@ export (int) var damage = 10
 export (int) var knockback = 40
 export (int) var hitstun = 20
 export (int) var priority = 0
+export (bool) var low = false
+export (bool) var high = false
 
 export (int) var max_health = 20
 export (float) var health = 20
 
 func _queue_hit(area):
-	queued_hits[area] = {"hitter":area.get_parent(), "priority":area.get_parent().priority, "knockback":area.get_parent().knockback, "hitstun":area.get_parent().hitstun, "damage":area.get_parent().damage}
+	queued_hits[area] = {
+		"hitter" : area.get_parent(),
+		"priority" : area.get_parent().priority,
+		"knockback" : area.get_parent().knockback,
+		"hitstun" : area.get_parent().hitstun,
+		"damage" : area.get_parent().damage,
+		"low" : area.get_parent().low,
+		"high" : area.get_parent().high
+	}
 	pass # replace with function body
 
 func _dequeue_hit(area):
