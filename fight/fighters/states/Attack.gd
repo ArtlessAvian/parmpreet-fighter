@@ -5,11 +5,14 @@ export (float) var knockback = 40
 export (float) var hitstun = 20
 export (bool) var low = false
 export (bool) var high = false
+export (bool) var jump_cancelable = false;
 
 func _run(subject, controller):
 	
 	if (subject.get_node("Core").have_hit):
 		if (subject.grounded):
+			if (controller.dir() > 6 and jump_cancelable):
+				return "Jump"
 			if (controller.dir() > 3):
 				attack_pool = "Standing"
 			else:

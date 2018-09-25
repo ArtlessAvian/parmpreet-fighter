@@ -87,7 +87,10 @@ func check_hit():
 		emit_signal("got_hit", $Core.health, enemy_combo)
 	
 	if (!hits.empty()):
-		$StateMachine.set_state("Reel", highest_priority)
+		if ($Core.health <= 0):
+			$StateMachine.set_state("Dead", highest_priority)
+		else:
+			$StateMachine.set_state("Reel", highest_priority)
 	
 	for hit in hits:
 		$Core.queued_hits.erase(hit)

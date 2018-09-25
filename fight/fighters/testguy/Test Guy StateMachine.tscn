@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://fight/fighters/states/Stand.gd" type="Script" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://fight/fighters/states/Reel.gd" type="Script" id=10]
 [ext_resource path="res://fight/fighters/states/BlockStun.gd" type="Script" id=11]
 [ext_resource path="res://fight/fighters/states/Attack.gd" type="Script" id=12]
+[ext_resource path="res://fight/fighters/states/Dead.gd" type="Script" id=13]
 
-[node name="Test Guy StateMachine" type="Node" index="0"]
+[node name="Test Guy StateMachine" type="Node"]
 
 script = ExtResource( 1 )
 subjectPath = ".."
@@ -97,6 +98,7 @@ knockback = 40
 hitstun = 20
 low = false
 high = false
+jump_cancelable = false
 
 [node name="StandingHeavy" type="Node" parent="." index="11"]
 
@@ -109,6 +111,7 @@ knockback = 40
 hitstun = 20
 low = false
 high = false
+jump_cancelable = true
 
 [node name="CrouchingLight" type="Node" parent="." index="12"]
 
@@ -121,6 +124,7 @@ knockback = 40
 hitstun = 20
 low = true
 high = false
+jump_cancelable = false
 
 [node name="CrouchingHeavy" type="Node" parent="." index="13"]
 
@@ -133,6 +137,7 @@ knockback = 160.0
 hitstun = 20.0
 low = false
 high = false
+jump_cancelable = false
 
 [node name="JumpingLight" type="Node" parent="." index="14"]
 
@@ -145,6 +150,7 @@ knockback = 40
 hitstun = 20
 low = false
 high = true
+jump_cancelable = false
 
 [node name="JumpingHeavy" type="Node" parent="." index="15"]
 
@@ -157,5 +163,11 @@ knockback = 40
 hitstun = 40.0
 low = false
 high = true
+jump_cancelable = false
+
+[node name="Dead" type="Node" parent="." index="16"]
+
+script = ExtResource( 13 )
+subjectPath = ".."
 
 
