@@ -12,6 +12,7 @@ func _run(subject, controller):
 		instance.position.y += -40
 		instance.position.x += subject.scale.x * 40
 		instance.scale.x = subject.scale.x
+		instance.get_node("Hitboxes").collision_layer = subject.get_node("Core/Hitboxes").collision_layer
 	
 	if (subject.get_node("Core/AnimationPlayer").current_animation == ""):
 		if (subject.grounded):

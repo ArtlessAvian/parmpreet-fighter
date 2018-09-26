@@ -29,6 +29,8 @@ func init_fight(fight_node):
 	b1.enemy = a1
 	
 	flip_collision(b1)
+	
+	b1.get_node("Core/Sprite").add_child(load("res://fight/fighters/testguy/Angery.tscn").instance())
 
 func flip_collision(p2):
 	# opposite of default

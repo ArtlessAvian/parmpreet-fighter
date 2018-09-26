@@ -12,16 +12,15 @@ func _ready():
 		change_buffer.append(5)
 
 func _process(delta):
-
+	
 	var angle = int(floor(randf() * 9) + 1)
 	
-	if (get_tree().get_frame() % 20 != 0):
+	if ((get_tree().get_frame() % 20) >= 3):
 		angle = buffer[0]
-	else:
-		if (randf() < 0.5):
+		if (randf() < 0.04):
 			Input.action_press(focus + "_light")
-		if (randf() < 0.5):
-			Input.action_press(focus + "_heavy")
+		if (randf() < 0.04):
+			Input.action_press(focus + "_medium")
 
 	buffer.pop_back()
 	buffer.push_front(angle)

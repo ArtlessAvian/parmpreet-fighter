@@ -70,6 +70,7 @@ func check_hit():
 	for hit in $Core.queued_hits:
 		var data = $Core.queued_hits[hit]
 		
+		data["hitter"].have_hit = true;
 		$Core.hitstop = 7
 		data["hitter"].hitstop = 7
 		
@@ -86,7 +87,6 @@ func check_hit():
 			highest_priority = data
 		enemy_combo += 1
 		
-		data["hitter"].have_hit = true;
 		$Core.health -= data["damage"]
 		
 		emit_signal("got_hit", $Core.health, enemy_combo)

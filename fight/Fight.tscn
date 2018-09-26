@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://fight/Fight.gd" type="Script" id=1]
 [ext_resource path="res://fight/yesthatsaspinner.png" type="Texture" id=2]
 [ext_resource path="res://fight/PlayerUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://fight/fighters/testguy/HADOOOOOOKEN Core.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
 
@@ -22,7 +21,7 @@ script/source = "extends Label
 func _process(delta):
 	text = str($\"../../../B1/StateMachine\".controller.change_buffer)"
 
-[node name="Fight" type="Node" index="0"]
+[node name="Fight" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -139,10 +138,6 @@ _sections_unfolded = [ "Transform" ]
 
 position = Vector2( 100, 0 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="Core" parent="." index="4" instance=ExtResource( 4 )]
-
-position = Vector2( -391.803, -59.4178 )
 
 [connection signal="got_hit" from="A1" to="Camera2D/MarginContainer/PlayerUI2" method="_on_combo"]
 
