@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://fight/fighters/states/Stand.gd" type="Script" id=2]
@@ -12,7 +12,9 @@
 [ext_resource path="res://fight/fighters/states/Reel.gd" type="Script" id=10]
 [ext_resource path="res://fight/fighters/states/BlockStun.gd" type="Script" id=11]
 [ext_resource path="res://fight/fighters/states/Attack.gd" type="Script" id=12]
-[ext_resource path="res://fight/fighters/states/Dead.gd" type="Script" id=13]
+[ext_resource path="res://fight/fighters/testguy/TATSUMAKISEMPUYAKU.gd" type="Script" id=13]
+[ext_resource path="res://fight/fighters/testguy/HADOOOOOOKEN.gd" type="Script" id=14]
+[ext_resource path="res://fight/fighters/states/Dead.gd" type="Script" id=15]
 
 [node name="Test Guy StateMachine" type="Node"]
 
@@ -182,9 +184,37 @@ low = false
 high = true
 jump_cancelable = true
 
-[node name="Dead" type="Node" parent="." index="16"]
+[node name="TATSUMAKISEMPUYAKU" type="Node" parent="." index="16"]
 
 script = ExtResource( 13 )
+debug_me = false
+subjectPath = ".."
+attack_pool = ""
+priority = -1
+damage = 1
+knockback = 40
+hitstun = 20
+low = false
+high = false
+jump_cancelable = false
+
+[node name="HADOOOOOOKEN" type="Node" parent="." index="17"]
+
+script = ExtResource( 14 )
+debug_me = false
+subjectPath = ".."
+attack_pool = ""
+priority = -1
+damage = 1
+knockback = 40
+hitstun = 20
+low = false
+high = false
+jump_cancelable = false
+
+[node name="Dead" type="Node" parent="." index="18"]
+
+script = ExtResource( 15 )
 debug_me = false
 subjectPath = ".."
 

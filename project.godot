@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 FightInitializer="*res://fight/FightInitializer.gd"
 Player1="*res://Controller.gd"
 Player2="*res://Controller.gd"
+DumbController="*res://DumbController.gd"
 
 [display]
 

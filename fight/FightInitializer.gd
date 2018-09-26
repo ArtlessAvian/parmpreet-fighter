@@ -19,7 +19,8 @@ func init_fight(fight_node):
 	var b1 = fight_node.get_node("B1")
 	
 	a1.get_node("StateMachine").controller = Player1
-	b1.get_node("StateMachine").controller = Player2
+#	b1.get_node("StateMachine").controller = Player2
+	b1.get_node("StateMachine").controller = DumbController
 	
 	a1.position.x = -100
 	b1.position.x = 100

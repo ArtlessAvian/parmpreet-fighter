@@ -13,8 +13,8 @@ var grounded = true
 var air_action = 2
 
 var motions = {
-	"236" : "JumpingHeavy",
-	"623" : "JumpingHeavy"
+	"214" : "TATSUMAKISEMPUYAKU",
+	"236" : "HADOOOOOOKEN"
 }
 
 func _ready():

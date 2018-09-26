@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://fight/Core.gd" type="Script" id=1]
 [ext_resource path="res://fight/CoreAnimationPlayer.gd" type="Script" id=2]
@@ -337,6 +337,37 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 44 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+
+resource_name = "HADOOOOOOKEN"
+length = 30.0
+loop = false
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6, 8, 15, 17, 19, 27 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 5, 6, 7, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 6, 14, 17, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -20.0, -20.0, 20.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -723,6 +754,85 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
+[sub_resource type="Animation" id=23]
+
+resource_name = "TATSUMAKISEMPUYAKU"
+length = 60.0
+loop = false
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 6, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10, 16, 22, 28, 34, 40, 46, 49, 60 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.8 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 10, 16, 40, 46 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -15 ), Vector2( 0, -15 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/0:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, 3 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitboxes/0:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -21.4496, -38.927 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hitboxes/0:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 10, 12, 16, 18, 22, 24, 28, 30, 34, 36, 40, 42 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false, true, false, true ]
+}
+
 [sub_resource type="Animation" id=18]
 
 length = 25.0
@@ -762,14 +872,14 @@ extents = Vector2( 40.915, 11.7628 )
 custom_solver_bias = 0.0
 extents = Vector2( 33.0074, 11.7628 )
 
-[node name="Test Guy Core" type="Node2D"]
+[node name="Test Guy Core" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
-_sections_unfolded = [ "Playback Options", "Transform", "Z Index" ]
+_sections_unfolded = [ "Playback Options", "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
-damage = 10
+damage = 1
 knockback = 40
 hitstun = 20
 priority = 0
@@ -794,6 +904,7 @@ anims/CrouchingHeavy = SubResource( 6 )
 anims/CrouchingLight = SubResource( 7 )
 anims/Dash = SubResource( 8 )
 anims/Dead = SubResource( 9 )
+anims/HADOOOOOOKEN = SubResource( 24 )
 anims/Jump = SubResource( 10 )
 anims/JumpingHeavy = SubResource( 11 )
 anims/JumpingLight = SubResource( 12 )
@@ -802,6 +913,7 @@ anims/Rest = SubResource( 14 )
 anims/Stand = SubResource( 15 )
 anims/StandingHeavy = SubResource( 16 )
 anims/StandingLight = SubResource( 17 )
+anims/TATSUMAKISEMPUYAKU = SubResource( 23 )
 anims/Walk = SubResource( 18 )
 blend_times = [  ]
 script = ExtResource( 2 )
@@ -810,6 +922,7 @@ _sections_unfolded = [ "Playback Options" ]
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
 position = Vector2( 0, -64 )
+rotation = 0.0537024
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )
 vframes = 8
@@ -835,7 +948,8 @@ __meta__ = {
 
 [node name="0" type="CollisionShape2D" parent="Hitboxes" index="0"]
 
-scale = Vector2( 1e-005, 1e-005 )
+position = Vector2( -21.4496, -38.927 )
+scale = Vector2( 3, 3 )
 shape = SubResource( 19 )
 disabled = true
 _sections_unfolded = [ "Transform", "Visibility" ]

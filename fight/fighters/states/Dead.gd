@@ -19,6 +19,8 @@ func _enter(subject, controller, old_state, args):
 	knockback = args["knockback"] * 3
 	hitstun = args["hitstun"] * 3
 	
-	dir = hitter.get_parent().scale.x
+#	TODO: SEE REEL.
+#	AHHHHHHHHHHH
+	dir = hitter.global_scale.y
 	
 	frame_no = 0

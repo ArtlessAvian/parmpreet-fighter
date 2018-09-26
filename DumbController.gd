@@ -1,29 +1,28 @@
 extends Node
 
-var focus = "kb"
+var focus = "random"
 
 var buffer = []
 var change_buffer = []
 const BUFFER_SIZE = 30
 
 func _ready():
-	Player2.focus = "c0"
-	
 	for i in range(0,BUFFER_SIZE):
 		buffer.append(5)
 		change_buffer.append(5)
 
 func _process(delta):
-	var angle = 5
-	if (Input.is_action_pressed(focus + "_up")):
-		angle += 3
-	if (Input.is_action_pressed(focus + "_down")):
-		angle -= 3
-	if (Input.is_action_pressed(focus + "_left")):
-		angle -= 1
-	if (Input.is_action_pressed(focus + "_right")):
-		angle += 1
+
+	var angle = int(floor(randf() * 9) + 1)
 	
+	if (get_tree().get_frame() % 20 != 0):
+		angle = buffer[0]
+	else:
+		if (randf() < 0.5):
+			Input.action_press(focus + "_light")
+		if (randf() < 0.5):
+			Input.action_press(focus + "_heavy")
+
 	buffer.pop_back()
 	buffer.push_front(angle)
 #	for i in range(1, 6):
@@ -80,31 +79,3 @@ func detect_motion(nums, flipped, leeway = 7):
 			return false
 			
 	return true
-
-#func trace_motion(nums, leeway):
-#	var trace = ""
-#	if (int(nums[nums.length()-1]) != buffer[0]):
-#		return buffer[0] + " FAIL"
-#
-#	var cursor = -1
-#	for index in range(nums.length()-1, -1, -1):
-#
-#		var fail = true
-#		for attempt in range(0, leeway):
-#			cursor += 1
-#			if (cursor >= BUFFER_SIZE):
-#				return trace + " TOO SLOW"
-#			trace = trace + str(buffer[cursor])
-#			if (buffer[cursor] == int(nums[index])):
-#				fail = false
-#				break
-#		if (fail):
-#			return trace + " FAIL"
-#
-#	return trace + " SUCC"
-#
-#func is_qcf():
-#	return detect_motion("236", 10)
-#
-#func is_qcb():
-#	return detect_motion("214", 10)

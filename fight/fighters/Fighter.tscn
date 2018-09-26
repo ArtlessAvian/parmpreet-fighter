@@ -2,7 +2,7 @@
 
 [ext_resource path="res://fight/fighters/Fighter.gd" type="Script" id=1]
 
-[node name="Fighter" type="Node2D" index="0"]
+[node name="Fighter" type="Node2D"]
 
 script = ExtResource( 1 )
 my_core = null

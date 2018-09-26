@@ -23,6 +23,9 @@ func _enter(subject, controller, old_state, args):
 	knockback = args["knockback"]
 	hitstun = args["hitstun"]
 	
-	dir = hitter.get_parent().scale.x
+#	TODO: It appears that X is Y? i am confuse
+# 	SUPER CONFUSE.
+#	NO REALLY WHY
+	dir = hitter.global_scale.y
 	
 	frame_no = 0

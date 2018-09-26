@@ -4,7 +4,7 @@ var hitstop = 0
 
 var have_hit = false
 var queued_hits = {}
-export (int) var damage = 10
+export (int) var damage = 1
 export (int) var knockback = 40
 export (int) var hitstun = 20
 export (int) var priority = 0
