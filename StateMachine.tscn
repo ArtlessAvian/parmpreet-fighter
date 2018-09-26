@@ -5,6 +5,7 @@
 [node name="StateMachine" type="Node"]
 
 script = ExtResource( 1 )
+debug_me = true
 subjectPath = NodePath("..")
 
 

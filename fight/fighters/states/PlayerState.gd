@@ -10,18 +10,21 @@ export (String) var attack_pool = ""
 export (int, -1, 9) var priority = -1
 
 func try_attack(subject, controller):
-#
-#	if (attack_pool != "Standing"):
-#		print("icu, but pretend this is " + attack_pool)
-#	attack_pool = "Standing"
 	
+	var light_pressed = Input.is_action_just_pressed(controller.focus + "_light")
+	var heavy_pressed = Input.is_action_just_pressed(controller.focus + "_medium")
+	
+	if (!light_pressed and !heavy_pressed):
+		return ""
+		
 #	for subject.supers
 #		check
 #			goto
 	
-#	for subject.motions
-#		check
-#			goto
+	for motion in subject.motions.keys():
+		if (controller.detect_motion(motion, subject.scale.x < 0, 6)):
+			print("detected " + motion)
+			return subject.motions[motion]
 #	
 	
 #	if (priority < 6 and Input.is_action_just_pressed(controller.focus + "_heavy")):
@@ -30,10 +33,10 @@ func try_attack(subject, controller):
 #	if (priority < 4 and Input.is_action_just_pressed(controller.focus + "_medium")):
 #		if (self.name != (attack_pool + "Medium")):
 #			return attack_pool + "Medium"
-	if (priority < 4 and Input.is_action_just_pressed(controller.focus + "_medium")):
+	if (priority < 4 and heavy_pressed):
 		if (self.name != (attack_pool + "Heavy")):
 			return attack_pool + "Heavy"
-	if (priority < 2 and Input.is_action_just_pressed(controller.focus + "_light")):
+	if (priority < 2 and light_pressed):
 		if (self.name != (attack_pool + "Light")):
 			return attack_pool + "Light"
 #	if (Input.is_action_just_pressed(controller.focus + "_light")):

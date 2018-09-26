@@ -12,4 +12,6 @@ my_state_machine = null
 
 [node name="StateMachine" parent="." index="1" instance_placeholder="res://StateMachine.tscn"]
 
+debug_me = false
+
 

@@ -12,6 +12,11 @@ var vel = Vector2(0,0)
 var grounded = true
 var air_action = 2
 
+var motions = {
+	"236" : "JumpingHeavy",
+	"623" : "JumpingHeavy"
+}
+
 func _ready():
 	$Core.replace_by_instance(my_core)
 	$StateMachine.replace_by_instance(my_state_machine)

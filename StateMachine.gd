@@ -1,6 +1,8 @@
 extends Node
 signal new_state(state_str)
 
+export (bool) var debug_me = false
+
 class State:
 	extends Node
 	
@@ -34,3 +36,6 @@ func set_state(state_str, args={}):
 	current_state._enter(subject, controller, old_state, args)
 	
 	emit_signal("new_state", current_state)
+	
+	if (debug_me):
+		print(old_state.name + "\t" + current_state.name)

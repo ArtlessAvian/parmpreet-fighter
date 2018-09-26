@@ -10,18 +10,17 @@ export (bool) var jump_cancelable = false;
 func _run(subject, controller):
 	
 	if (subject.get_node("Core").have_hit):
-		if (subject.grounded):
-			if (controller.dir() > 6 and jump_cancelable):
-				return "Jump"
-			if (controller.dir() > 3):
-				attack_pool = "Standing"
-			else:
-				attack_pool = "Crouching"
-		else:
-			attack_pool = "Jumping"
+		alter_pool(subject, controller)
 		var try_attack = try_attack(subject, controller)
 		if (try_attack != ""):
 			return try_attack
+		
+		if (controller.dir() > 6 and jump_cancelable):
+			if (subject.grounded):
+				return "Jump"
+			elif (subject.air_action > 0):
+				subject.air_action -= 1
+				return "DoubleJump"
 	
 	if (subject.get_node("Core/AnimationPlayer").current_animation == ""):
 		if (subject.grounded):
@@ -31,6 +30,15 @@ func _run(subject, controller):
 				return "Crouch"
 		else:
 			return "Jump"
+
+func alter_pool(subject, controller):
+	if (subject.grounded):
+		if (controller.dir() > 3):
+			attack_pool = "Standing"
+		else:
+			attack_pool = "Crouching"
+	else:
+		attack_pool = "Jumping"
 
 func _enter(subject, controller, old_state, args):
 #	if (old_state.attack_pool == "Standing"):
