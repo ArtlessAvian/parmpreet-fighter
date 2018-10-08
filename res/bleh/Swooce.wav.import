@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Swooce.wav-c794c05112d53c14435e6965111c5e42.sample"
+
+[deps]
+
+source_file="res://res/bleh/Swooce.wav"
+dest_files=[ "res://.import/Swooce.wav-c794c05112d53c14435e6965111c5e42.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

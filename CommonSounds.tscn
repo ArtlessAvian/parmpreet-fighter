@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
+
+var sounds = {
+#	\"block\" : preload(\"\")
+}
+
+var looper = -1
+func get_player():
+	pass
+#	looper += 1
+#	for i in range(0, self.get_child_count()):
+#		var player = self.get_child((i + looper) % self.get_child_count())
+#		if (!player.playing):
+#			return player
+#
+#	var new = AudioStreamPlayer2D.new()
+#	self.add_child(new)
+#	return new
+
+func play(sound):
+#	var child = get_player()
+#	child.stream = sounds[sound]
+#	child.play()
+	pass"
+
+[node name="CommonSounds" type="Node"]
+
+script = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="0"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." index="1"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." index="2"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+

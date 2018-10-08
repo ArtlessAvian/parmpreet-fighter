@@ -20,6 +20,8 @@ FightInitializer="*res://fight/FightInitializer.gd"
 Player1="*res://Controller.gd"
 Player2="*res://Controller.gd"
 DumbController="*res://DumbController.gd"
+DumbController2="*res://DumbController.gd"
+CommonSounds="*res://CommonSounds.tscn"
 
 [display]
 

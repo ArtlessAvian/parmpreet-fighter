@@ -1,6 +1,7 @@
 extends "res://StateMachine.gd".State
 
 export (String) var attack_pool = ""
+export (bool) var can_block = true
 
 # Can combo an attack into an attack of higher priority.
 # For a zig zag magic series, just go 0 1 2 3 4 5 6.
@@ -24,6 +25,10 @@ func try_attack(subject, controller):
 	for motion in subject.motions.keys():
 		if (controller.detect_motion(motion, subject.scale.x < 0, 6)):
 			print("detected " + motion)
+			
+#			if (light_pressed and heavy_pressed):
+#				cool thing
+			
 			return subject.motions[motion]
 #	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://fight/Fight.gd" type="Script" id=1]
 [ext_resource path="res://fight/yesthatsaspinner.png" type="Texture" id=2]
@@ -13,13 +13,6 @@ script/source = "extends MarginContainer
 #func _process(delta):
 #	self.set_begin($\"../Camera2D\".get_camera_screen_center() + half_offset)
 #	self.set_end($\"../Camera2D\".get_camera_screen_center())"
-
-[sub_resource type="GDScript" id=2]
-
-script/source = "extends Label
-
-func _process(delta):
-	text = str($\"../../../B1/StateMachine\".controller.change_buffer)"
 
 [node name="Fight" type="Node"]
 
@@ -106,41 +99,18 @@ margin_bottom = 268.0
 _sections_unfolded = [ "Grow Direction", "Rect", "custom_constants" ]
 right_player = true
 
-[node name="Debug" type="Label" parent="Camera2D/MarginContainer" index="2"]
+[node name="TeamA" type="Node2D" parent="." index="2"]
 
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 20.0
-margin_top = 137.0
-margin_right = 492.0
-margin_bottom = 151.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script = SubResource( 2 )
-_sections_unfolded = [ "Margin" ]
-
-[node name="A1" parent="." index="2" instance_placeholder="res://fight/fighters/Fighter.tscn"]
+[node name="A1" parent="TeamA" index="0" instance_placeholder="res://fight/fighters/Fighter.tscn"]
 
 position = Vector2( -100, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="B1" parent="." index="3" instance_placeholder="res://fight/fighters/Fighter.tscn"]
+[node name="TeamB" type="Node2D" parent="." index="3"]
+
+[node name="B1" parent="TeamB" index="0" instance_placeholder="res://fight/fighters/Fighter.tscn"]
 
 position = Vector2( 100, 0 )
 _sections_unfolded = [ "Transform" ]
-
-[connection signal="got_hit" from="A1" to="Camera2D/MarginContainer/PlayerUI2" method="_on_combo"]
-
-[connection signal="got_hit" from="B1" to="Camera2D/MarginContainer/PlayerUI" method="_on_combo"]
 
 

@@ -20,10 +20,12 @@ func _run(subject, controller):
 var what_animation
 
 func _enter(subject, controller, old_state, args):
+	var hitter = args["hitter"]
+	
 	frame_no = 0
-	dir = subject.enemy.scale.x
+	dir = hitter.global_scale.y
 	subject.vel.y = 0
-	what_animation = args
+	what_animation = controller.dir() <= 3
 
 func animation_name():
 	if (what_animation):

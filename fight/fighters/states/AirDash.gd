@@ -16,4 +16,4 @@ func _run(subject, controller):
 
 func _enter(subject, controller, old_state, args):
 	subject.vel.y = 0
-	subject.vel.x = (controller.dir() - 5) * 5
+	subject.vel.x = (controller.dir() - 5) * 6

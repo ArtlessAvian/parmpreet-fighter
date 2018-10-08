@@ -11,10 +11,10 @@
 [ext_resource path="res://fight/fighters/states/Walk.gd" type="Script" id=9]
 [ext_resource path="res://fight/fighters/states/Reel.gd" type="Script" id=10]
 [ext_resource path="res://fight/fighters/states/BlockStun.gd" type="Script" id=11]
-[ext_resource path="res://fight/fighters/states/Attack.gd" type="Script" id=12]
-[ext_resource path="res://fight/fighters/testguy/TATSUMAKISEMPUYAKU.gd" type="Script" id=13]
-[ext_resource path="res://fight/fighters/testguy/HADOOOOOOKEN.gd" type="Script" id=14]
-[ext_resource path="res://fight/fighters/states/Dead.gd" type="Script" id=15]
+[ext_resource path="res://fight/fighters/states/Dead.gd" type="Script" id=12]
+[ext_resource path="res://fight/fighters/states/Attack.gd" type="Script" id=13]
+[ext_resource path="res://fight/fighters/testguy/TATSUMAKISEMPUYAKU.gd" type="Script" id=14]
+[ext_resource path="res://fight/fighters/testguy/HADOOOOOOKEN.gd" type="Script" id=15]
 
 [node name="Test Guy StateMachine" type="Node"]
 
@@ -28,6 +28,7 @@ script = ExtResource( 2 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
+can_block = true
 priority = -1
 
 [node name="AirDash" type="Node" parent="." index="1"]
@@ -36,6 +37,7 @@ script = ExtResource( 3 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
+can_block = true
 priority = -1
 
 [node name="BackWalk" type="Node" parent="." index="2"]
@@ -44,6 +46,7 @@ script = ExtResource( 4 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
+can_block = true
 priority = -1
 
 [node name="Crouch" type="Node" parent="." index="3"]
@@ -52,6 +55,7 @@ script = ExtResource( 5 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
+can_block = true
 priority = -1
 
 [node name="Dash" type="Node" parent="." index="4"]
@@ -60,6 +64,7 @@ script = ExtResource( 6 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
+can_block = true
 priority = -1
 
 [node name="DoubleJump" type="Node" parent="." index="5"]
@@ -68,6 +73,7 @@ script = ExtResource( 7 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
+can_block = true
 priority = -1
 
 [node name="Jump" type="Node" parent="." index="6"]
@@ -76,6 +82,7 @@ script = ExtResource( 8 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
+can_block = true
 priority = -1
 
 [node name="Walk" type="Node" parent="." index="7"]
@@ -84,6 +91,7 @@ script = ExtResource( 9 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
+can_block = true
 priority = -1
 
 [node name="Reel" type="Node" parent="." index="8"]
@@ -91,6 +99,9 @@ priority = -1
 script = ExtResource( 10 )
 debug_me = false
 subjectPath = ".."
+attack_pool = ""
+can_block = true
+priority = -1
 
 [node name="BlockStun" type="Node" parent="." index="9"]
 
@@ -98,124 +109,152 @@ script = ExtResource( 11 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
+can_block = true
 priority = -1
 
-[node name="StandingLight" type="Node" parent="." index="10"]
+[node name="Dead" type="Node" parent="." index="10"]
 
 script = ExtResource( 12 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
-priority = 0
-damage = 1
-knockback = 40
-hitstun = 20
-low = false
-high = false
-jump_cancelable = false
+can_block = true
+priority = -1
 
-[node name="StandingHeavy" type="Node" parent="." index="11"]
-
-script = ExtResource( 12 )
-debug_me = false
-subjectPath = ".."
-attack_pool = ""
-priority = 2
-damage = 1
-knockback = 40
-hitstun = 20
-low = false
-high = false
-jump_cancelable = true
-
-[node name="CrouchingLight" type="Node" parent="." index="12"]
-
-script = ExtResource( 12 )
-debug_me = false
-subjectPath = ".."
-attack_pool = ""
-priority = 2
-damage = 1
-knockback = 40
-hitstun = 20
-low = true
-high = false
-jump_cancelable = false
-
-[node name="CrouchingHeavy" type="Node" parent="." index="13"]
-
-script = ExtResource( 12 )
-debug_me = false
-subjectPath = ".."
-attack_pool = ""
-priority = 3
-damage = 2.0
-knockback = 160.0
-hitstun = 20.0
-low = false
-high = false
-jump_cancelable = false
-
-[node name="JumpingLight" type="Node" parent="." index="14"]
-
-script = ExtResource( 12 )
-debug_me = false
-subjectPath = ".."
-attack_pool = ""
-priority = 0
-damage = 1
-knockback = 40
-hitstun = 20
-low = false
-high = true
-jump_cancelable = false
-
-[node name="JumpingHeavy" type="Node" parent="." index="15"]
-
-script = ExtResource( 12 )
-debug_me = false
-subjectPath = ".."
-attack_pool = ""
-priority = 1
-damage = 2.0
-knockback = 0.0
-hitstun = 40.0
-low = false
-high = true
-jump_cancelable = true
-
-[node name="TATSUMAKISEMPUYAKU" type="Node" parent="." index="16"]
+[node name="StandingLight" type="Node" parent="." index="11"]
 
 script = ExtResource( 13 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
-priority = -1
+can_block = true
+priority = 0
 damage = 1
 knockback = 40
+vert_knockback = 0
 hitstun = 20
 low = false
 high = false
 jump_cancelable = false
+sound_primary = 0
 
-[node name="HADOOOOOOKEN" type="Node" parent="." index="17"]
+[node name="StandingHeavy" type="Node" parent="." index="12"]
+
+script = ExtResource( 13 )
+debug_me = false
+subjectPath = ".."
+attack_pool = ""
+can_block = true
+priority = 2
+damage = 1
+knockback = 40
+vert_knockback = 0
+hitstun = 20
+low = false
+high = false
+jump_cancelable = true
+sound_primary = 0
+
+[node name="CrouchingLight" type="Node" parent="." index="13"]
+
+script = ExtResource( 13 )
+debug_me = false
+subjectPath = ".."
+attack_pool = ""
+can_block = true
+priority = 2
+damage = 1
+knockback = 40
+vert_knockback = 0
+hitstun = 20
+low = true
+high = false
+jump_cancelable = false
+sound_primary = 0
+
+[node name="CrouchingHeavy" type="Node" parent="." index="14"]
+
+script = ExtResource( 13 )
+debug_me = false
+subjectPath = ".."
+attack_pool = ""
+can_block = true
+priority = 3
+damage = 2.0
+knockback = 60.0
+vert_knockback = 64.0
+hitstun = 20.0
+low = false
+high = false
+jump_cancelable = true
+sound_primary = 0
+
+[node name="JumpingLight" type="Node" parent="." index="15"]
+
+script = ExtResource( 13 )
+debug_me = false
+subjectPath = ".."
+attack_pool = ""
+can_block = true
+priority = 0
+damage = 1
+knockback = 40
+vert_knockback = 0
+hitstun = 20
+low = false
+high = true
+jump_cancelable = false
+sound_primary = 0
+
+[node name="JumpingHeavy" type="Node" parent="." index="16"]
+
+script = ExtResource( 13 )
+debug_me = false
+subjectPath = ".."
+attack_pool = ""
+can_block = true
+priority = 1
+damage = 2.0
+knockback = 0.0
+vert_knockback = 0
+hitstun = 40.0
+low = false
+high = true
+jump_cancelable = true
+sound_primary = 0
+
+[node name="TATSUMAKISEMPUYAKU" type="Node" parent="." index="17"]
 
 script = ExtResource( 14 )
 debug_me = false
 subjectPath = ".."
 attack_pool = ""
+can_block = true
 priority = -1
 damage = 1
 knockback = 40
+vert_knockback = 0
 hitstun = 20
 low = false
 high = false
 jump_cancelable = false
+sound_primary = 0
 
-[node name="Dead" type="Node" parent="." index="18"]
+[node name="HADOOOOOOKEN" type="Node" parent="." index="18"]
 
 script = ExtResource( 15 )
 debug_me = false
 subjectPath = ".."
+attack_pool = ""
+can_block = true
+priority = -1
+damage = 1
+knockback = 40
+vert_knockback = 0
+hitstun = 20
+low = false
+high = false
+jump_cancelable = false
+sound_primary = 0
 
 

@@ -699,6 +699,23 @@ tracks/4/keys = {
 "update": 1,
 "values": [ 0, 40 ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 9, 18 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=18]
 
@@ -752,6 +769,20 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -880,7 +911,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 damage = 1
-knockback = 40
+knockback = 0
+vert_knockback = 40
 hitstun = 20
 priority = 0
 low = false
@@ -926,6 +958,7 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )
 vframes = 8
 hframes = 8
+frame = 5
 _sections_unfolded = [ "Animation", "Transform", "Visibility" ]
 
 [node name="Hitboxes" type="Area2D" parent="." index="2"]
@@ -948,7 +981,9 @@ __meta__ = {
 [node name="0" type="CollisionShape2D" parent="Hitboxes" index="0"]
 
 position = Vector2( 44.488, -42.8992 )
+scale = Vector2( 3, 3 )
 shape = SubResource( 21 )
+disabled = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Hurtboxes" type="Area2D" parent="." index="3"]
@@ -985,6 +1020,17 @@ _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 position = Vector2( 2.04607, -13.0234 )
 shape = SubResource( 24 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 [connection signal="area_entered" from="Hurtboxes" to="." method="_queue_hit"]
 

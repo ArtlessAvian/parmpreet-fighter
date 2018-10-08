@@ -6,6 +6,7 @@ var have_hit = false
 var queued_hits = {}
 export (int) var damage = 1
 export (int) var knockback = 40
+export (int) var vert_knockback = 40
 export (int) var hitstun = 20
 export (int) var priority = 0
 export (bool) var low = false
@@ -19,6 +20,7 @@ func _queue_hit(area):
 		"hitter" : area.get_parent(),
 		"priority" : area.get_parent().priority,
 		"knockback" : area.get_parent().knockback,
+		"vert_knockback" : area.get_parent().vert_knockback,
 		"hitstun" : area.get_parent().hitstun,
 		"damage" : area.get_parent().damage,
 		"low" : area.get_parent().low,

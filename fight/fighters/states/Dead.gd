@@ -1,10 +1,4 @@
-extends "res://StateMachine.gd".State
-
-var frame_no = 0;
-var dir = 1;
-var knockback = 100;
-var hitstun = 100;
-var hitter = null;
+extends "Reel.gd"
 
 func _run(subject, controller):
 	
@@ -13,6 +7,10 @@ func _run(subject, controller):
 	
 	subject.vel.x *= dir
 	frame_no += 1
+	
+	if (subject.get_node("Core/AnimationPlayer").current_animation == ""):
+		subject.emit_signal("im_dead", subject)
+		get_tree().change_scene_to(load("res://fight/Fight.tscn"))
 
 func _enter(subject, controller, old_state, args):
 	hitter = args["hitter"]

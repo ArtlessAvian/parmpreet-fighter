@@ -2,10 +2,16 @@ extends "PlayerState.gd"
 
 export (float, 0, 10) var damage = 1
 export (float) var knockback = 40
+export (float) var vert_knockback = 0
 export (float) var hitstun = 20
 export (bool) var low = false
 export (bool) var high = false
 export (bool) var jump_cancelable = false;
+
+export (int) var sound_primary = 0
+
+func _ready():
+	can_block = false
 
 func _run(subject, controller):
 	
@@ -45,11 +51,17 @@ func _enter(subject, controller, old_state, args):
 	if (subject.grounded):
 		subject.vel.x = 0
 	
-	subject.get_node("Core").damage = damage
-	subject.get_node("Core").knockback = knockback
-	subject.get_node("Core").hitstun = hitstun
-	subject.get_node("Core").low = low
-	subject.get_node("Core").high = high
+	var core = subject.get_node("Core")
+	
+	core.damage = damage
+	core.knockback = knockback
+	core.vert_knockback = vert_knockback
+	core.hitstun = hitstun
+	core.low = low
+	core.high = high
+	
+	subject.get_node("Core/AudioStreamPlayer2D").stream = subject.sound_bank[sound_primary]
+#	subject.get_node("Core/AudioStreamPlayer2D").play()
 
 func _exit(subject, controller, state_str):
 	subject.get_node("Core").have_hit = false;

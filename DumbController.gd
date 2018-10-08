@@ -15,7 +15,7 @@ func _process(delta):
 	
 	var angle = int(floor(randf() * 9) + 1)
 	
-	if ((get_tree().get_frame() % 20) >= 3):
+	if ((get_tree().get_frame() % 20) >= 4):
 		angle = buffer[0]
 		if (randf() < 0.04):
 			Input.action_press(focus + "_light")

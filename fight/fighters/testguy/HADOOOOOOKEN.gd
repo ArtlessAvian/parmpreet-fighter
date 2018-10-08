@@ -1,5 +1,6 @@
 extends "../states/Attack.gd"
 
+var heavy_variation = true
 var frame_no = 0
 var projectile = preload("res://fight/fighters/testguy/HADOOOOOOKEN Core.tscn")
 
@@ -13,6 +14,7 @@ func _run(subject, controller):
 		instance.position.x += subject.scale.x * 40
 		instance.scale.x = subject.scale.x
 		instance.get_node("Hitboxes").collision_layer = subject.get_node("Core/Hitboxes").collision_layer
+		instance.heavy_variation = heavy_variation
 	
 	if (subject.get_node("Core/AnimationPlayer").current_animation == ""):
 		if (subject.grounded):
@@ -26,6 +28,8 @@ func _run(subject, controller):
 	frame_no += 1
 
 func _enter(subject, controller, old_state, args):
+	heavy_variation = Input.is_action_just_pressed(controller.focus + "_medium")
+	
 	if (subject.grounded):
 		subject.vel.x = 0
 	frame_no = 0
