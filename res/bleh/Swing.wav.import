@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Swooce.wav-c794c05112d53c14435e6965111c5e42.sample"
+path="res://.import/Swing.wav-2a57fd754991d96e761dd91e2c5bc69a.sample"
 
 [deps]
 
-source_file="res://res/bleh/Swooce.wav"
-dest_files=[ "res://.import/Swooce.wav-c794c05112d53c14435e6965111c5e42.sample" ]
+source_file="res://res/bleh/Swing.wav"
+dest_files=[ "res://.import/Swing.wav-2a57fd754991d96e761dd91e2c5bc69a.sample" ]
 
 [params]
 

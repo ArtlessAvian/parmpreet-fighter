@@ -4,11 +4,8 @@
 [ext_resource path="res://fight/fighters/testguy/Test Guy Core.tscn" type="PackedScene" id=2]
 [ext_resource path="res://fight/fighters/testguy/Test Guy StateMachine.tscn" type="PackedScene" id=3]
 
-[node name="Test Guy" index="0" instance=ExtResource( 1 )]
-
-_sections_unfolded = [ "Visibility" ]
+[node name="Test Guy" instance=ExtResource( 1 )]
 my_core = ExtResource( 2 )
 my_state_machine = ExtResource( 3 )
-
 
 [editable path="Core"]

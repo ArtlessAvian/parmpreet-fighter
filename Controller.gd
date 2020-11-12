@@ -13,7 +13,7 @@ func _ready():
 		buffer.append(5)
 		change_buffer.append(5)
 
-func _process(delta):
+func _physics_process(delta):
 	var angle = 5
 	if (Input.is_action_pressed(focus + "_up")):
 		angle += 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://fight/Core.gd" type="Script" id=1]
 [ext_resource path="res://fight/CoreAnimationPlayer.gd" type="Script" id=2]
@@ -465,10 +465,24 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 11 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=13]
 
-length = 600.0
+length = 60.0
 loop = false
 step = 1.0
 tracks/0/type = "value"
@@ -777,7 +791,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 4 ),
+"times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -787,7 +801,37 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=19]
 
-resource_name = "TATSUMAKISEMPUYAKU"
+resource_name = "SuperJump"
+length = 30.0
+loop = false
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 30 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 720.0 ]
+}
+
+[sub_resource type="Animation" id=20]
+
 length = 60.0
 loop = false
 step = 1.0
@@ -864,7 +908,7 @@ tracks/5/keys = {
 "values": [ false, true, false, true, false, true, false, true, false, true, false, true ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 
 length = 25.0
 loop = true
@@ -882,23 +926,23 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12 ]
 }
 
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=22]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="CapsuleShape2D" id=22]
+[sub_resource type="CapsuleShape2D" id=23]
 
 custom_solver_bias = 0.0
 radius = 19.8552
 height = 74.1223
 
-[sub_resource type="RectangleShape2D" id=23]
+[sub_resource type="RectangleShape2D" id=24]
 
 custom_solver_bias = 0.0
 extents = Vector2( 40.915, 11.7628 )
 
-[sub_resource type="RectangleShape2D" id=24]
+[sub_resource type="RectangleShape2D" id=25]
 
 custom_solver_bias = 0.0
 extents = Vector2( 33.0074, 11.7628 )
@@ -945,8 +989,9 @@ anims/Rest = SubResource( 15 )
 anims/Stand = SubResource( 16 )
 anims/StandingHeavy = SubResource( 17 )
 anims/StandingLight = SubResource( 18 )
-anims/TATSUMAKISEMPUYAKU = SubResource( 19 )
-anims/Walk = SubResource( 20 )
+anims/SuperJump = SubResource( 19 )
+anims/TATSUMAKISEMPUYAKU = SubResource( 20 )
+anims/Walk = SubResource( 21 )
 blend_times = [  ]
 script = ExtResource( 2 )
 _sections_unfolded = [ "Playback Options" ]
@@ -958,7 +1003,6 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )
 vframes = 8
 hframes = 8
-frame = 5
 _sections_unfolded = [ "Animation", "Transform", "Visibility" ]
 
 [node name="Hitboxes" type="Area2D" parent="." index="2"]
@@ -980,9 +1024,8 @@ __meta__ = {
 
 [node name="0" type="CollisionShape2D" parent="Hitboxes" index="0"]
 
-position = Vector2( 44.488, -42.8992 )
-scale = Vector2( 3, 3 )
-shape = SubResource( 21 )
+scale = Vector2( 5, 2 )
+shape = SubResource( 22 )
 disabled = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -1006,19 +1049,19 @@ __meta__ = {
 [node name="0" type="CollisionShape2D" parent="Hurtboxes" index="0"]
 
 position = Vector2( 0, -58 )
-shape = SubResource( 22 )
+shape = SubResource( 23 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="1" type="CollisionShape2D" parent="Hurtboxes" index="1"]
 
 position = Vector2( 0.970612, -62.853 )
-shape = SubResource( 23 )
+shape = SubResource( 24 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="2" type="CollisionShape2D" parent="Hurtboxes" index="2"]
 
 position = Vector2( 2.04607, -13.0234 )
-shape = SubResource( 24 )
+shape = SubResource( 25 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]

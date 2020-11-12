@@ -10,6 +10,9 @@ func grounded_check(subject, controller):
 		subject.scale.x *= -1
 	
 	if (controller.dir() >= 7):
+		for i in range(0,10):
+			if (controller.buffer[i] <= 3):
+				return "SuperJump"
 		return "Jump"
 	
 	if (controller.dir() <= 3):

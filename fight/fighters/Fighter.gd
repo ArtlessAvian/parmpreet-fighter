@@ -21,7 +21,7 @@ var motions = {
 }
 
 var sound_bank = [
-	preload("res://res/bleh/Swooce.wav")
+	preload("res://res/bleh/Swing.wav")
 ]
 
 func _ready():
